@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+<h3 class="left">
+    Sent Emails
+  </h3>
 <h3 class="right">
     <a href="New.aspx">New</a> 
   </h3>

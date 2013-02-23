@@ -21,7 +21,14 @@ public partial class Emails_Index : System.Web.UI.Page
     }
     protected void gvEmails_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
+        if (e.Row.RowType != DataControlRowType.DataRow) return;
+        LinkButton lb;
+        lb = new LinkButton();
+        lb.CommandArgument = e.Row.Cells[3].Text;
+        lb.CommandName = "NumClick";
+        lb.Text = "Details";
+        lb.PostBackUrl = "Details.aspx?id=" + e.Row.Cells[3].Text;
+        e.Row.Cells[3].Controls.Add((Control)lb);
     }
 
     protected void BindDataToGridView() {
@@ -32,6 +39,7 @@ public partial class Emails_Index : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Sent At", typeof(string)));
         dt.Columns.Add(new DataColumn("Sent To", typeof(string)));
         dt.Columns.Add(new DataColumn("Sent By", typeof(string)));
+        dt.Columns.Add(new DataColumn("Details", typeof(string)));
 
         List<tbl_Emails_SMS> list;
         if (CurrentUser.Role() == "Admin"){
@@ -48,6 +56,7 @@ public partial class Emails_Index : System.Web.UI.Page
             dr["Sent At"] = DateTimeHelper.ConvertToString(x.Created_At.ToString());
             dr["Sent To"] = x.Email;
             dr["Sent By"] = x.tbl_Users.User_Name;
+            dr["Details"] = x.Id;
             dt.Rows.Add(dr);
         }
 
