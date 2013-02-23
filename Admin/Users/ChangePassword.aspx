@@ -9,7 +9,6 @@
   <div class="clear"></div>
   <fieldset>
       <legend>Change Password</legend>
-      <div>
       <p>
       <label>New Password</label>
           <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
@@ -34,6 +33,7 @@
           <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Save"  CssClass="btn btn-save"/>
       <asp:Button ID="btnCancel" runat="server" CausesValidation="False"  Text="Cancel"  
               CssClass="btn btn-cancel" onclick="btnCancel_Click" />
+              </p>
 </fieldset>
 </asp:Content>
 

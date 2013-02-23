@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
   <fieldset>
       <legend>Change Your Password</legend>
-      <div>
       <p>
       <label>Current Password</label>
           <asp:TextBox ID="txtCurrentPassword" runat="server" TextMode="Password"></asp:TextBox>
@@ -35,6 +34,7 @@
           <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Save"  CssClass="btn btn-save"/>
       <asp:Button ID="btnCancel" runat="server" CausesValidation="False"  Text="Cancel"  
               CssClass="btn btn-cancel" onclick="btnCancel_Click" />
+              </p>
 </fieldset>
 </asp:Content>
 

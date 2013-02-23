@@ -9,7 +9,6 @@
   <div class="clear"></div>
 <fieldset>
       <legend>Edit User</legend>
-      <div>
           <asp:HiddenField ID="hdnCurrentUserName" runat="server" Visible="False" />
       <p>
           <label>User Name</label>
@@ -33,7 +32,7 @@
           <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Save"  CssClass="btn btn-save"/>
       <asp:Button ID="btnCancel" runat="server" CausesValidation="False"  Text="Cancel"  
               CssClass="btn btn-cancel" onclick="btnCancel_Click" />
-               
+               </p>
 </fieldset>
 </asp:Content>
 

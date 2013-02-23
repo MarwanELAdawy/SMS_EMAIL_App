@@ -42,11 +42,17 @@
               <%} %>
             </div>
             <div class="clear hideSkiplink">
+            <% if (Page.User.Identity.IsAuthenticated)
+                 {%>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Admin/Users/Index.aspx" Text="Users" 
+                            Value="Admin"/>
+                        <asp:MenuItem NavigateUrl="~/Emails/Index.aspx" Text="Emails" Value="Emails">
+                        </asp:MenuItem>
                     </Items>
                 </asp:Menu>
+                <%} %>
             </div>
         </div>
         <div class="main">

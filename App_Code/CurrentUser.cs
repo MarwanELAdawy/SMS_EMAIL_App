@@ -29,8 +29,7 @@ public static class CurrentUser
         }
         else if (role == "Normal_User")
         {
-            returnUrl1 = "/SMS_EMAIL_App/Send/Email.aspx";
-            returnUrl1 = "/SMS_EMAIL_App/NotAuthorized.aspx";
+            returnUrl1 = "/SMS_EMAIL_App/Emails/Index.aspx";
         }
         return returnUrl1;
     }

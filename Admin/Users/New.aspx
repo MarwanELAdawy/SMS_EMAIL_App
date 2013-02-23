@@ -9,7 +9,7 @@
   <div class="clear"></div>
 <fieldset>
       <legend>New User</legend>
-      <div>
+      
       <p>
           <label>User Name</label>
     <asp:TextBox ID="txtUserName" runat="server" MaxLength="45"></asp:TextBox>
@@ -51,7 +51,6 @@
       <asp:Button ID="btnCancel" runat="server" CausesValidation="False" 
                     onclick="btnCancel_Click" Text="Cancel"  CssClass="btn"/>
       </p>
-      </div>
 </fieldset>
 </asp:Content>
 
