@@ -10,6 +10,8 @@
     <asp:TextBox ID="txtClaimNumber" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvClaimNumber" runat="server" 
                     ControlToValidate="txtClaimNumber" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="revClaimNumber" runat="server" ForeColor="#FF3300" ValidationExpression="\d+" 
+                    ControlToValidate="txtClaimNumber" SetFocusOnError="True">Only numbers are allowed !</asp:RegularExpressionValidator>
       </p>
       <p>
   <label>Policy Number</label>
@@ -26,14 +28,16 @@
       <p>
   <label>Mobile Number</label>
     <asp:TextBox ID="txtMobile" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvMobile" runat="server" 
-                    ControlToValidate="txtMobile" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="revMobile" runat="server" ForeColor="#FF3300" ValidationExpression="\d*"
+                    ControlToValidate="txtMobile" SetFocusOnError="True">Please enter valid phone number !</asp:RegularExpressionValidator>
       </p>
       <p>
   <label>Email</label>
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvtxtEmail" runat="server" 
                     ControlToValidate="txtEmail" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="revEmail" runat="server" ForeColor="#FF3300" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+                    ControlToValidate="txtEmail" SetFocusOnError="True">Please enter valid email !</asp:RegularExpressionValidator>
       </p>
       <p>
       <label>Body</label>
