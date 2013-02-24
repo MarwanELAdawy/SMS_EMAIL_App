@@ -22,6 +22,7 @@ public partial class Emails_New : System.Web.UI.Page
         _sms_EMAIL_DB_Entities.AddTotbl_Emails_SMS(email);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Successfully send an email !";
+        Mailer.SendMailMessage(txtEmail.Text.ToString().Trim(), "", "", txtSubject.Text.ToString().Trim(), txtText.Text.ToString().Trim());
         Response.Redirect("Index.aspx");
     }
     protected void btnCancel_Click(object sender, EventArgs e)
