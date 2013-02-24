@@ -12,14 +12,20 @@ public partial class SMS_New : System.Web.UI.Page
     protected SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void btnSend_Click(object sender, EventArgs e)
     {
         var phoneNumber = "966" + txtMobile.Text.Trim();
         var message = txtText.Text.ToString().Trim();
-        MyWebRequest myRequest = new MyWebRequest("http://www.jawalbsms.com/HttpSMSProvider.aspx", "POST", "username=acig111&password=1234&mobile="+phoneNumber+"&unicode=E&message="+message+"&sender=Acig");
+        var unicode = rblSMSLanguage.SelectedValue == "English" ? "E" : "U";
+
+        if (unicode == "U") {
+            message = StringHelper.StringToHexCode(message);
+        }
+
+        MyWebRequest myRequest = new MyWebRequest("http://www.jawalbsms.com/HttpSMSProvider.aspx", "POST", "username=acig111&password=1234&mobile="+phoneNumber+"&unicode="+unicode+"&message="+message+"&sender=Acig");
         var sms_code = myRequest.GetResponse();
         var sms_code_decode = StringHelper.ConvertResponseCode(sms_code);
         

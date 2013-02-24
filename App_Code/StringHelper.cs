@@ -108,4 +108,16 @@ public static class StringHelper
        }
        return sb.ToString();
     }
+
+    public static string StringToHexCode(string input) {
+        char[] values = input.ToCharArray();
+        string output = "";
+        foreach (char letter in values)
+        {
+            int value = Convert.ToInt32(letter);
+            string hexOutput = String.Format("{0:X}", value);
+            output += hexOutput;
+        }
+        return output;
+    }
 }
