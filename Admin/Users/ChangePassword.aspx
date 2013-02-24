@@ -16,7 +16,7 @@
                     ControlToValidate="txtPassword" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
     <asp:RegularExpressionValidator ID="revPassword" runat="server" 
                     ForeColor="#FF3300" ValidationExpression=".{6}.*" 
-                    ControlToValidate="txtPassword" SetFocusOnError="True">*</asp:RegularExpressionValidator>
+                    ControlToValidate="txtPassword" SetFocusOnError="True">Minimum Password length should be 6</asp:RegularExpressionValidator>
       </p>
       <p>
           <label>Confirm Password</label>
@@ -26,7 +26,7 @@
                     SetFocusOnError="True">*</asp:RequiredFieldValidator>
     <asp:CompareValidator ID="cvConfirmPassword" runat="server" 
                     ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" 
-                    ForeColor="#FF3300" SetFocusOnError="True">*</asp:CompareValidator>
+                    ForeColor="#FF3300" SetFocusOnError="True">Should Match New Password</asp:CompareValidator>
       </p>
       <p>
           <asp:HiddenField ID="hdnUserId" runat="server" />
