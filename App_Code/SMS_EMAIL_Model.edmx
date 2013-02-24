@@ -21,10 +21,14 @@
           <Property Name="Email" Type="nvarchar" MaxLength="300" />
           <Property Name="Mobile_Number" Type="nvarchar" MaxLength="300" />
           <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Claim_Number" Type="int" />
+          <Property Name="Claim_Number" Type="bigint" />
           <Property Name="Policy_Number" Type="nvarchar" MaxLength="500" />
           <Property Name="TP_Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email_Subject" Type="nvarchar" MaxLength="300" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SMS_Language" Type="nvarchar" MaxLength="50" />
+          <Property Name="SMS_Code" Type="nvarchar" MaxLength="200" />
+          <Property Name="SMS_Code_Decode" Type="nvarchar" MaxLength="500" />
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Created_At" Type="datetime" Nullable="false" />
         </EntityType>
@@ -75,10 +79,14 @@
           <Property Name="Email" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Mobile_Number" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Claim_Number" Type="Int32" />
+          <Property Name="Claim_Number" Type="Int64" />
           <Property Name="Policy_Number" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="TP_Name" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Email_Subject" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SMS_Language" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SMS_Code" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SMS_Code_Decode" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="User_Id" Type="Int32" Nullable="false" />
           <Property Name="Created_At" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="tbl_Users" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" FromRole="tbl_Emails_SMS" ToRole="tbl_Users" />
@@ -121,10 +129,14 @@
             <ScalarProperty Name="Email" ColumnName="Email" />
             <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
             <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="Text" ColumnName="Text" />
             <ScalarProperty Name="Claim_Number" ColumnName="Claim_Number" />
             <ScalarProperty Name="Policy_Number" ColumnName="Policy_Number" />
             <ScalarProperty Name="TP_Name" ColumnName="TP_Name" />
+            <ScalarProperty Name="Email_Subject" ColumnName="Email_Subject" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="SMS_Language" ColumnName="SMS_Language" />
+            <ScalarProperty Name="SMS_Code" ColumnName="SMS_Code" />
+            <ScalarProperty Name="SMS_Code_Decode" ColumnName="SMS_Code_Decode" />
             <ScalarProperty Name="User_Id" ColumnName="User_Id" />
             <ScalarProperty Name="Created_At" ColumnName="Created_At" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -159,12 +171,12 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EMAIL_SMS_Model">
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="1.125" Height="2.9417936197916652" IsExpanded="true" />
+      <Diagram Name="SMS_EMAIL_Model">
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="1.5" Height="2.9417936197916656" IsExpanded="true" />
         <AssociationConnector Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.5958968098958328" />
-          <ConnectorPoint PointX="3" PointY="2.5958968098958328" />
+          <ConnectorPoint PointX="2.25" PointY="2.9708968098958328" />
+          <ConnectorPoint PointX="3" PointY="2.9708968098958328" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

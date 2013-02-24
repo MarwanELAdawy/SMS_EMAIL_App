@@ -263,33 +263,9 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Text
-        {
-            get
-            {
-                return _Text;
-            }
-            set
-            {
-                OnTextChanging(value);
-                ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Text");
-                OnTextChanged();
-            }
-        }
-        private global::System.String _Text;
-        partial void OnTextChanging(global::System.String value);
-        partial void OnTextChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Claim_Number
+        public Nullable<global::System.Int64> Claim_Number
         {
             get
             {
@@ -304,8 +280,8 @@ namespace SMS_EMAIL_DB_Model
                 OnClaim_NumberChanged();
             }
         }
-        private Nullable<global::System.Int32> _Claim_Number;
-        partial void OnClaim_NumberChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _Claim_Number;
+        partial void OnClaim_NumberChanging(Nullable<global::System.Int64> value);
         partial void OnClaim_NumberChanged();
     
         /// <summary>
@@ -355,6 +331,126 @@ namespace SMS_EMAIL_DB_Model
         private global::System.String _TP_Name;
         partial void OnTP_NameChanging(global::System.String value);
         partial void OnTP_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email_Subject
+        {
+            get
+            {
+                return _Email_Subject;
+            }
+            set
+            {
+                OnEmail_SubjectChanging(value);
+                ReportPropertyChanging("Email_Subject");
+                _Email_Subject = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email_Subject");
+                OnEmail_SubjectChanged();
+            }
+        }
+        private global::System.String _Email_Subject;
+        partial void OnEmail_SubjectChanging(global::System.String value);
+        partial void OnEmail_SubjectChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SMS_Language
+        {
+            get
+            {
+                return _SMS_Language;
+            }
+            set
+            {
+                OnSMS_LanguageChanging(value);
+                ReportPropertyChanging("SMS_Language");
+                _SMS_Language = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SMS_Language");
+                OnSMS_LanguageChanged();
+            }
+        }
+        private global::System.String _SMS_Language;
+        partial void OnSMS_LanguageChanging(global::System.String value);
+        partial void OnSMS_LanguageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SMS_Code
+        {
+            get
+            {
+                return _SMS_Code;
+            }
+            set
+            {
+                OnSMS_CodeChanging(value);
+                ReportPropertyChanging("SMS_Code");
+                _SMS_Code = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SMS_Code");
+                OnSMS_CodeChanged();
+            }
+        }
+        private global::System.String _SMS_Code;
+        partial void OnSMS_CodeChanging(global::System.String value);
+        partial void OnSMS_CodeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SMS_Code_Decode
+        {
+            get
+            {
+                return _SMS_Code_Decode;
+            }
+            set
+            {
+                OnSMS_Code_DecodeChanging(value);
+                ReportPropertyChanging("SMS_Code_Decode");
+                _SMS_Code_Decode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SMS_Code_Decode");
+                OnSMS_Code_DecodeChanged();
+            }
+        }
+        private global::System.String _SMS_Code_Decode;
+        partial void OnSMS_Code_DecodeChanging(global::System.String value);
+        partial void OnSMS_Code_DecodeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

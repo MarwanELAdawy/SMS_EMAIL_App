@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="New.aspx.cs" Inherits="SMS_New" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+<style type="text/css">
+    #MainContent_rblSMSLanguage{
+        margin-left: 9px;
+        width: 221px;
+    }
+    #MainContent_rblSMSLanguage td label{
+        margin-left: 5px;
+        display: inline-block;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <fieldset>
@@ -31,12 +41,21 @@
     <asp:TextBox ID="txtMobile" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvMobile" runat="server" 
                     ControlToValidate="txtMobile" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="revMobile" runat="server" ForeColor="#FF3300" ValidationExpression="\d{10}" 
+    <asp:RegularExpressionValidator ID="revMobile" runat="server" ForeColor="#FF3300" ValidationExpression="\d{9}" 
                     ControlToValidate="txtMobile" SetFocusOnError="True">Please enter valid phone number !</asp:RegularExpressionValidator>
       </p>
       <p>
   <label>Email</label>
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+      </p>
+      <p>
+
+          <asp:RadioButtonList ID="rblSMSLanguage" runat="server" 
+              RepeatDirection="Horizontal">
+              <asp:ListItem Selected="True">English</asp:ListItem>
+              <asp:ListItem>Arabic</asp:ListItem>
+          </asp:RadioButtonList>
+
       </p>
       <p>
       <label>Message</label>

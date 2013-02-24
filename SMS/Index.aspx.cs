@@ -24,11 +24,11 @@ public partial class SMS_Index : System.Web.UI.Page
         if (e.Row.RowType != DataControlRowType.DataRow) return;
         LinkButton lb;
         lb = new LinkButton();
-        lb.CommandArgument = e.Row.Cells[3].Text;
+        lb.CommandArgument = e.Row.Cells[4].Text;
         lb.CommandName = "NumClick";
         lb.Text = "Details";
-        lb.PostBackUrl = "Details.aspx?id=" + e.Row.Cells[3].Text;
-        e.Row.Cells[3].Controls.Add((Control)lb);
+        lb.PostBackUrl = "Details.aspx?id=" + e.Row.Cells[4].Text;
+        e.Row.Cells[4].Controls.Add((Control)lb);
     }
 
     protected void BindDataToGridView()
@@ -40,6 +40,7 @@ public partial class SMS_Index : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Sent At", typeof(string)));
         dt.Columns.Add(new DataColumn("Sent To", typeof(string)));
         dt.Columns.Add(new DataColumn("Sent By", typeof(string)));
+        dt.Columns.Add(new DataColumn("Status", typeof(string)));
         dt.Columns.Add(new DataColumn("Details", typeof(string)));
 
         List<tbl_Emails_SMS> list;
@@ -59,6 +60,7 @@ public partial class SMS_Index : System.Web.UI.Page
             dr["Sent At"] = DateTimeHelper.ConvertToString(x.Created_At.ToString());
             dr["Sent To"] = x.Mobile_Number;
             dr["Sent By"] = x.tbl_Users.User_Name;
+            dr["Status"] = x.SMS_Code_Decode;
             dr["Details"] = x.Id;
             dt.Rows.Add(dr);
         }

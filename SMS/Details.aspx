@@ -40,6 +40,18 @@
   <%= sms.tbl_Users.User_Name %>
   </p>
   <p>
+  <span>Language:</span>
+  <%= sms.SMS_Language %>
+  </p>
+  <p>
+  <span>SMS Response Code:</span>
+  <%= sms.SMS_Code %>
+  </p>
+  <p>
+  <span>SMS Response:</span>
+  <%= sms.SMS_Code_Decode %>
+  </p>
+  <p>
   <span>Text:</span>
   <br />
   <%= sms.Text %>
