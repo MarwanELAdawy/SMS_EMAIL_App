@@ -18,7 +18,7 @@ public partial class Emails_New : System.Web.UI.Page
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var currentUserId = CurrentUser.Id();
         var claimNumber = long.Parse(txtClaimNumber.Text);
-        var email = new tbl_Emails_SMS { Claim_Number = claimNumber, Policy_Number = txtPolicyNumber.Text, TP_Name = txtTpName.Text, Email = txtEmail.Text, Text = txtText.Text, Type = "Email", User_Id = currentUserId, Created_At = DateTime.Now, Mobile_Number = txtMobile.Text };
+        var email = new tbl_Emails_SMS { Claim_Number = claimNumber, Policy_Number = txtPolicyNumber.Text, TP_Name = txtTpName.Text, Email = txtEmail.Text, Text = txtText.Text, Type = "Email", User_Id = currentUserId, Created_At = DateTime.Now, Mobile_Number = txtMobile.Text, Email_Subject = txtSubject.Text };
         _sms_EMAIL_DB_Entities.AddTotbl_Emails_SMS(email);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Successfully send an email !";

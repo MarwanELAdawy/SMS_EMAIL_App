@@ -32,6 +32,12 @@
                     ControlToValidate="txtMobile" SetFocusOnError="True">Please enter valid phone number !</asp:RegularExpressionValidator>
       </p>
       <p>
+      <label>Subject</label>
+    <asp:TextBox ID="txtSubject" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvSubject" runat="server" 
+                    ControlToValidate="txtSubject" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+      </p>
+      <p>
   <label>Email</label>
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvtxtEmail" runat="server" 

@@ -16,6 +16,10 @@
   <%= DateTimeHelper.ConvertToString(email.Created_At.ToString()) %>
   </p>
   <p>
+  <span>Send By</span>
+  <%= email.tbl_Users.User_Name %>
+  </p>
+  <p>
     <span>Claim Number:</span>
     <%= email.Claim_Number %>
   </p>
@@ -36,11 +40,11 @@
   <%= email.Email %>
   </p>
   <p>
-  <span>Send By</span>
-  <%= email.tbl_Users.User_Name %>
+  <span>Subject:</span>
+  <%= email.Email_Subject %>
   </p>
   <p>
-  <span>Text:</span>
+  <span>Body:</span>
   <br />
   <%= email.Text %>
   </p>
