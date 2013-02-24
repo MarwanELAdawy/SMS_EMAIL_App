@@ -50,6 +50,8 @@
                             Value="Admin"/>
                         <asp:MenuItem NavigateUrl="~/Emails/Index.aspx" Text="Emails" Value="Emails">
                         </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/SMS/Index.aspx" Text="SMS" Value="SMS">
+                        </asp:MenuItem>
                     </Items>
                 </asp:Menu>
                 <%} %>

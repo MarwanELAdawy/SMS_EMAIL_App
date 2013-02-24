@@ -12,7 +12,7 @@
   <div class="clear"></div>
   <hr />
     <asp:GridView ID="gvEmails" runat="server" AllowPaging="True" CssClass="table table-bordered" 
-        Width="100%" EmptyDataText="No Emails!" 
+        Width="100%" EmptyDataText="No Send Emails!" 
         onpageindexchanging="gvEmails_PageIndexChanging" 
         onrowdatabound="gvEmails_RowDataBound" PageSize="30">
     </asp:GridView>
