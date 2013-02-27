@@ -27,12 +27,18 @@ public class Mailer
         mMailMessage.IsBodyHtml = true;
         mMailMessage.Priority = MailPriority.Normal;
         SmtpClient mSmtpClient = new SmtpClient {
-               Host = "smtp.gmail.com",
-               Port = 587,
+               //Host = "smtp.gmail.com",
+               //Port = 587,
+               //EnableSsl = true,
+               //DeliveryMethod = SmtpDeliveryMethod.Network,
+               //UseDefaultCredentials = false,
+               //Credentials = new NetworkCredential("ubaidkhan88@gmail.com", "khan777111")
+               Host = "mail.acig.com.sa",
+               Port = 25,
                EnableSsl = true,
                DeliveryMethod = SmtpDeliveryMethod.Network,
                UseDefaultCredentials = false,
-               Credentials = new NetworkCredential("ubaidkhan88@gmail.com", "khan777111")
+               Credentials = new NetworkCredential("crmmailadmin", "passwoRd5656")
            };
         mSmtpClient.Send(mMailMessage);
     }

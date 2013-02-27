@@ -20,15 +20,18 @@
     <asp:TextBox ID="txtClaimNumber" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvClaimNumber" runat="server" 
                     ControlToValidate="txtClaimNumber" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="revClaimNumber" runat="server" 
-          ForeColor="#FF3300" ValidationExpression="\d+" 
-                    ControlToValidate="txtClaimNumber" SetFocusOnError="True">Only Numbers are allowed !</asp:RegularExpressionValidator>
       </p>
       <p>
   <label>Policy Number</label>
     <asp:TextBox ID="txtPolicyNumber" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvPolicyNumber" runat="server" 
                     ControlToValidate="txtPolicyNumber" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+      </p>
+      <p>
+      <label>TP Id</label>
+    <asp:TextBox ID="txtTPID" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvTPID" runat="server" 
+                    ControlToValidate="txtTPID" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
       </p>
       <p>
   <label>TP Name</label>

@@ -20,6 +20,12 @@
                     ControlToValidate="txtPolicyNumber" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
       </p>
       <p>
+      <label>TP Id</label>
+    <asp:TextBox ID="txtTPID" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvTPID" runat="server" 
+                    ControlToValidate="txtTPID" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+      </p>
+      <p>
   <label>TP Name</label>
     <asp:TextBox ID="txtTpName" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvTpName" runat="server" 

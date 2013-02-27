@@ -21,8 +21,9 @@
           <Property Name="Email" Type="nvarchar" MaxLength="300" />
           <Property Name="Mobile_Number" Type="nvarchar" MaxLength="300" />
           <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Claim_Number" Type="bigint" />
+          <Property Name="Claim_Number" Type="nvarchar" MaxLength="200" />
           <Property Name="Policy_Number" Type="nvarchar" MaxLength="500" />
+          <Property Name="TP_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="TP_Name" Type="nvarchar" MaxLength="500" />
           <Property Name="Email_Subject" Type="nvarchar" MaxLength="300" />
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
@@ -79,8 +80,9 @@
           <Property Name="Email" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Mobile_Number" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Claim_Number" Type="Int64" />
+          <Property Name="Claim_Number" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Policy_Number" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="TP_ID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="TP_Name" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="Email_Subject" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -131,6 +133,7 @@
             <ScalarProperty Name="Type" ColumnName="Type" />
             <ScalarProperty Name="Claim_Number" ColumnName="Claim_Number" />
             <ScalarProperty Name="Policy_Number" ColumnName="Policy_Number" />
+            <ScalarProperty Name="TP_ID" ColumnName="TP_ID" />
             <ScalarProperty Name="TP_Name" ColumnName="TP_Name" />
             <ScalarProperty Name="Email_Subject" ColumnName="Email_Subject" />
             <ScalarProperty Name="Text" ColumnName="Text" />
@@ -172,11 +175,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="SMS_EMAIL_Model">
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1" Height="3.9033007812499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="1.5" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="1.625" Height="2.9417936197916661" IsExpanded="true" />
         <AssociationConnector Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.9708968098958328" />
-          <ConnectorPoint PointX="3" PointY="2.9708968098958328" />
+          <ConnectorPoint PointX="2.25" PointY="3.0958968098958328" />
+          <ConnectorPoint PointX="3" PointY="3.0958968098958328" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

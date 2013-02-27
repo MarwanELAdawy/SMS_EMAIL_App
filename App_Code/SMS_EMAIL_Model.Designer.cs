@@ -265,7 +265,7 @@ namespace SMS_EMAIL_DB_Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int64> Claim_Number
+        public global::System.String Claim_Number
         {
             get
             {
@@ -275,13 +275,13 @@ namespace SMS_EMAIL_DB_Model
             {
                 OnClaim_NumberChanging(value);
                 ReportPropertyChanging("Claim_Number");
-                _Claim_Number = StructuralObject.SetValidValue(value);
+                _Claim_Number = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Claim_Number");
                 OnClaim_NumberChanged();
             }
         }
-        private Nullable<global::System.Int64> _Claim_Number;
-        partial void OnClaim_NumberChanging(Nullable<global::System.Int64> value);
+        private global::System.String _Claim_Number;
+        partial void OnClaim_NumberChanging(global::System.String value);
         partial void OnClaim_NumberChanged();
     
         /// <summary>
@@ -307,6 +307,30 @@ namespace SMS_EMAIL_DB_Model
         private global::System.String _Policy_Number;
         partial void OnPolicy_NumberChanging(global::System.String value);
         partial void OnPolicy_NumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TP_ID
+        {
+            get
+            {
+                return _TP_ID;
+            }
+            set
+            {
+                OnTP_IDChanging(value);
+                ReportPropertyChanging("TP_ID");
+                _TP_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TP_ID");
+                OnTP_IDChanged();
+            }
+        }
+        private global::System.String _TP_ID;
+        partial void OnTP_IDChanging(global::System.String value);
+        partial void OnTP_IDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

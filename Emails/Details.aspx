@@ -28,6 +28,10 @@
   <%= email.Policy_Number %>
   </p>
   <p>
+  <span>TP ID:</span>
+  <%= email.TP_ID %>
+  </p>
+  <p>
   <span>TP Name:</span>
   <%= email.TP_Name %>
   </p>

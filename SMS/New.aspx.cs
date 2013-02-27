@@ -31,8 +31,7 @@ public partial class SMS_New : System.Web.UI.Page
         
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var currentUserId = CurrentUser.Id();
-        var claimNumber = long.Parse(txtClaimNumber.Text);
-        var email = new tbl_Emails_SMS { Claim_Number = claimNumber, Policy_Number = txtPolicyNumber.Text, TP_Name = txtTpName.Text, Email = txtEmail.Text, Mobile_Number = phoneNumber, Text = txtText.Text, Type = "SMS", SMS_Code = sms_code, SMS_Code_Decode = sms_code_decode, SMS_Language = rblSMSLanguage.SelectedValue, User_Id = currentUserId, Created_At = DateTime.Now };
+        var email = new tbl_Emails_SMS { Claim_Number = txtClaimNumber.Text, Policy_Number = txtPolicyNumber.Text, TP_Name = txtTpName.Text, Email = txtEmail.Text, Mobile_Number = phoneNumber, Text = txtText.Text, Type = "SMS", SMS_Code = sms_code, SMS_Code_Decode = sms_code_decode, SMS_Language = rblSMSLanguage.SelectedValue, User_Id = currentUserId, Created_At = DateTime.Now, TP_ID = txtTPID.Text };
         _sms_EMAIL_DB_Entities.AddTotbl_Emails_SMS(email);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Please check SMS status !";

@@ -110,13 +110,12 @@ public static class StringHelper
     }
 
     public static string StringToHexCode(string input) {
-        char[] values = input.ToCharArray();
         string output = "";
-        foreach (char letter in values)
+        foreach (char c in input)
         {
-            int value = Convert.ToInt32(letter);
-            string hexOutput = String.Format("{0:X}", value);
-            output += hexOutput;
+            int value = (int)c;
+            string hex = value.ToString("X4");
+            output += hex;
         }
         return output;
     }

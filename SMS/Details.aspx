@@ -24,6 +24,10 @@
   <%= sms.Policy_Number %>
   </p>
   <p>
+  <span>TP ID:</span>
+  <%= sms.TP_ID %>
+  </p>
+  <p>
   <span>TP Name:</span>
   <%= sms.TP_Name %>
   </p>

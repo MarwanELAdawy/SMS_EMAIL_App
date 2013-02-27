@@ -4,6 +4,9 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<div style="float:left;margin-left:147px;margin-top:15px;">
+    <img src="/SMS_EMAIL_App/Images/acig_logo_full.png" alt="Acig Logo" />
+    </div>
    <fieldset class="login" style="float:right;width:39%;margin-right:94px;height:360px;">
       <legend>Log in</legend>
       <div>
