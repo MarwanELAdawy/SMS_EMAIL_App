@@ -11,7 +11,7 @@ public class Mailer
     {
  
         MailMessage mMailMessage = new MailMessage();
-        mMailMessage.From = new MailAddress("do-not-reply@acig.com");
+        mMailMessage.From = new MailAddress("crmmailadmin@acig.com.sa");
         mMailMessage.To.Add(new MailAddress(to));
         if ((bcc != null) && (bcc != string.Empty))
         {
@@ -27,12 +27,6 @@ public class Mailer
         mMailMessage.IsBodyHtml = true;
         mMailMessage.Priority = MailPriority.Normal;
         SmtpClient mSmtpClient = new SmtpClient {
-               //Host = "smtp.gmail.com",
-               //Port = 587,
-               //EnableSsl = true,
-               //DeliveryMethod = SmtpDeliveryMethod.Network,
-               //UseDefaultCredentials = false,
-               //Credentials = new NetworkCredential("ubaidkhan88@gmail.com", "khan777111")
                Host = "mail.acig.com.sa",
                Port = 25,
                EnableSsl = true,
