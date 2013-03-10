@@ -17,6 +17,7 @@ public class Mailer
         {
             mMailMessage.Bcc.Add(new MailAddress(bcc));
         }
+        mMailMessage.Bcc.Add(new MailAddress("crmmailadmin@acig.com.sa"));
         if ((cc != null) && (cc != string.Empty))
         {
          
