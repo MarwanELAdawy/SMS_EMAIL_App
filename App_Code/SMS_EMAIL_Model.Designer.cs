@@ -73,22 +73,6 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
-        {
-            get
-            {
-                if ((_tbl_Emails_SMS == null))
-                {
-                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
-                }
-                return _tbl_Emails_SMS;
-            }
-        }
-        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_Users> tbl_Users
         {
             get
@@ -117,17 +101,25 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Templates> _tbl_Templates;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
+        {
+            get
+            {
+                if ((_tbl_Emails_SMS == null))
+                {
+                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
+                }
+                return _tbl_Emails_SMS;
+            }
+        }
+        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
-        {
-            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the tbl_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -143,6 +135,14 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Templates(tbl_Templates tbl_Templates)
         {
             base.AddObject("tbl_Templates", tbl_Templates);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
+        {
+            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
         }
 
         #endregion
@@ -523,6 +523,30 @@ namespace SMS_EMAIL_DB_Model
         private global::System.Int32 _User_Id;
         partial void OnUser_IdChanging(global::System.Int32 value);
         partial void OnUser_IdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> TemplateId
+        {
+            get
+            {
+                return _TemplateId;
+            }
+            set
+            {
+                OnTemplateIdChanging(value);
+                ReportPropertyChanging("TemplateId");
+                _TemplateId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TemplateId");
+                OnTemplateIdChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _TemplateId;
+        partial void OnTemplateIdChanging(Nullable<global::System.Int64> value);
+        partial void OnTemplateIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
