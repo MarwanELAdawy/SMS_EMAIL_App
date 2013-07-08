@@ -46,11 +46,13 @@
                  {%>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Admin/Users/Index.aspx" Text="Users" 
+                        <asp:MenuItem NavigateUrl="~/admin/Users/Index.aspx" Text="Users" 
                             Value="Admin"/>
-                        <asp:MenuItem NavigateUrl="~/Emails/Index.aspx" Text="Emails" Value="Emails">
+                        <asp:MenuItem NavigateUrl="~/emails/Index.aspx" Text="Emails" Value="Emails">
                         </asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/SMS/Index.aspx" Text="SMS" Value="SMS">
+                        <asp:MenuItem NavigateUrl="~/sms/index.aspx" Text="SMS" Value="SMS">
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/admin/templates/index.aspx" Text="Templates" Value="Templates">
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>

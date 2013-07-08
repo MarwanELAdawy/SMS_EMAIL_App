@@ -101,6 +101,22 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Users> _tbl_Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Templates> tbl_Templates
+        {
+            get
+            {
+                if ((_tbl_Templates == null))
+                {
+                    _tbl_Templates = base.CreateObjectSet<tbl_Templates>("tbl_Templates");
+                }
+                return _tbl_Templates;
+            }
+        }
+        private ObjectSet<tbl_Templates> _tbl_Templates;
 
         #endregion
         #region AddTo Methods
@@ -119,6 +135,14 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Users(tbl_Users tbl_Users)
         {
             base.AddObject("tbl_Users", tbl_Users);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Templates EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Templates(tbl_Templates tbl_Templates)
+        {
+            base.AddObject("tbl_Templates", tbl_Templates);
         }
 
         #endregion
@@ -567,6 +591,165 @@ namespace SMS_EMAIL_DB_Model
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SMS_EMAIL_DB_Model", Name="tbl_Templates")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_Templates : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_Templates object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="language">Initial value of the Language property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="createdAt">Initial value of the CreatedAt property.</param>
+        /// <param name="updatedAt">Initial value of the UpdatedAt property.</param>
+        public static tbl_Templates Createtbl_Templates(global::System.Int64 id, global::System.String language, global::System.String text, global::System.DateTime createdAt, global::System.DateTime updatedAt)
+        {
+            tbl_Templates tbl_Templates = new tbl_Templates();
+            tbl_Templates.Id = id;
+            tbl_Templates.Language = language;
+            tbl_Templates.Text = text;
+            tbl_Templates.CreatedAt = createdAt;
+            tbl_Templates.UpdatedAt = updatedAt;
+            return tbl_Templates;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Language
+        {
+            get
+            {
+                return _Language;
+            }
+            set
+            {
+                OnLanguageChanging(value);
+                ReportPropertyChanging("Language");
+                _Language = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Language");
+                OnLanguageChanged();
+            }
+        }
+        private global::System.String _Language;
+        partial void OnLanguageChanging(global::System.String value);
+        partial void OnLanguageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedAt
+        {
+            get
+            {
+                return _CreatedAt;
+            }
+            set
+            {
+                OnCreatedAtChanging(value);
+                ReportPropertyChanging("CreatedAt");
+                _CreatedAt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedAt");
+                OnCreatedAtChanged();
+            }
+        }
+        private global::System.DateTime _CreatedAt;
+        partial void OnCreatedAtChanging(global::System.DateTime value);
+        partial void OnCreatedAtChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime UpdatedAt
+        {
+            get
+            {
+                return _UpdatedAt;
+            }
+            set
+            {
+                OnUpdatedAtChanging(value);
+                ReportPropertyChanging("UpdatedAt");
+                _UpdatedAt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedAt");
+                OnUpdatedAtChanged();
+            }
+        }
+        private global::System.DateTime _UpdatedAt;
+        partial void OnUpdatedAtChanging(global::System.DateTime value);
+        partial void OnUpdatedAtChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

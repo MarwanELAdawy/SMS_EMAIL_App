@@ -4,9 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SMS_EMAIL_DB_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SMS_EMAIL_DB_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SMS_EMAIL_DB_ModelStoreContainer">
           <EntitySet Name="tbl_Emails_SMS" EntityType="SMS_EMAIL_DB_Model.Store.tbl_Emails_SMS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Templates" EntityType="SMS_EMAIL_DB_Model.Store.tbl_Templates" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbl_Users" EntityType="SMS_EMAIL_DB_Model.Store.tbl_Users" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_tbl_Emails_tbl_Users" Association="SMS_EMAIL_DB_Model.Store.FK_tbl_Emails_tbl_Users">
             <End Role="tbl_Users" EntitySet="tbl_Users" />
@@ -32,6 +33,16 @@
           <Property Name="SMS_Code_Decode" Type="nvarchar" MaxLength="500" />
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Created_At" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_Users">
           <Key>
@@ -59,8 +70,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SMS_EMAIL_DB_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -71,6 +81,7 @@
             <End Role="tbl_Users" EntitySet="tbl_Users" />
             <End Role="tbl_Emails_SMS" EntitySet="tbl_Emails_SMS" />
           </AssociationSet>
+          <EntitySet Name="tbl_Templates" EntityType="SMS_EMAIL_DB_Model.tbl_Templates" />
         </EntityContainer>
         <EntityType Name="tbl_Emails_SMS">
           <Key>
@@ -120,6 +131,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Language" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedAt" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -154,6 +175,17 @@
             <ScalarProperty Name="Created_At" ColumnName="Created_At" />
             <ScalarProperty Name="Updated_At" ColumnName="Updated_At" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_Templates">
+            <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Templates">
+              <MappingFragment StoreEntitySet="tbl_Templates">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -181,6 +213,7 @@
           <ConnectorPoint PointX="2.25" PointY="3.0958968098958328" />
           <ConnectorPoint PointX="3" PointY="3.0958968098958328" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Templates" Width="1.5" PointX="5.375" PointY="0.75" Height="1.9802864583333326" />
       </Diagram>
     </Diagrams>
   </Designer>
