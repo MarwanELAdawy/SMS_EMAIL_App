@@ -13,10 +13,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <fieldset>
         <asp:HiddenField ID="hdnFldSMSId" runat="server" />
+        <a href="Index.aspx" class="btn btn-primary right">Back</a>
+        <div class="clear">
+        </div>
         <legend>Sent SMS Details</legend>
         <p>
             <span>Sent At</span>
-            <%= DateTimeHelper.ConvertToString(sms.Created_At.ToString()) %>
+            <%= sms.SMS_Sent_At %>
         </p>
         <p>
             <span>Claim Number:</span>
@@ -65,12 +68,11 @@
         </p>
         <asp:Button ID="btnResend" runat="server" Text="Resend" OnClientClick="return confirm('Are you sure?')"
             CssClass="btn btn-success" OnClick="btnResend_Click" />
-        <h3>
-            <a href="Index.aspx">Back</a></h3>
     </fieldset>
     <fieldset>
         <legend>Events</legend>
-        <asp:GridView ID="gvEvents" runat="server" ShowHeader="true" AutoGenerateColumns="false" EmptyDataText="No Records" CssClass="table table-bordered">
+        <asp:GridView ID="gvEvents" runat="server" ShowHeader="true" AutoGenerateColumns="false"
+            EmptyDataText="No Records" CssClass="table table-bordered">
             <Columns>
                 <asp:TemplateField HeaderText="Created At">
                     <ItemTemplate>
