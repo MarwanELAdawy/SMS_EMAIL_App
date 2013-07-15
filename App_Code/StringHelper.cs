@@ -66,6 +66,9 @@ public static class StringHelper
             case "116":
                 ConvertedResponse = "Invalid sender name.";
                 break;
+            case "120":
+                ConvertedResponse = "Invalid phone number.";
+                break;
             default:
                 ConvertedResponse = "Success";
                 break;

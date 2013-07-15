@@ -13,7 +13,7 @@ public partial class Emails_Details : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        var emailId = int.Parse(Request.QueryString["id"]);
+        var emailId = long.Parse(Request.QueryString["id"]);
         if(CurrentUser.Role() == "Admin"){
             email = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Id == emailId).First();
         } else{

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Emails_tbl_Users", "tbl_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SMS_EMAIL_DB_Model.tbl_Users), "tbl_Emails_SMS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SMS_EMAIL_DB_Model.tbl_Emails_SMS), true)]
+[assembly: EdmRelationshipAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SMS_EMAIL_DB_Model.tbl_Emails_SMS), "tbl_Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SMS_EMAIL_DB_Model.tbl_Events), true)]
 
 #endregion
 
@@ -73,18 +74,34 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Users> tbl_Users
+        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
         {
             get
             {
-                if ((_tbl_Users == null))
+                if ((_tbl_Emails_SMS == null))
                 {
-                    _tbl_Users = base.CreateObjectSet<tbl_Users>("tbl_Users");
+                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
                 }
-                return _tbl_Users;
+                return _tbl_Emails_SMS;
             }
         }
-        private ObjectSet<tbl_Users> _tbl_Users;
+        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Events> tbl_Events
+        {
+            get
+            {
+                if ((_tbl_Events == null))
+                {
+                    _tbl_Events = base.CreateObjectSet<tbl_Events>("tbl_Events");
+                }
+                return _tbl_Events;
+            }
+        }
+        private ObjectSet<tbl_Events> _tbl_Events;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -105,28 +122,36 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
+        public ObjectSet<tbl_Users> tbl_Users
         {
             get
             {
-                if ((_tbl_Emails_SMS == null))
+                if ((_tbl_Users == null))
                 {
-                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
+                    _tbl_Users = base.CreateObjectSet<tbl_Users>("tbl_Users");
                 }
-                return _tbl_Emails_SMS;
+                return _tbl_Users;
             }
         }
-        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
+        private ObjectSet<tbl_Users> _tbl_Users;
 
         #endregion
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddTotbl_Users(tbl_Users tbl_Users)
+        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
         {
-            base.AddObject("tbl_Users", tbl_Users);
+            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Events EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Events(tbl_Events tbl_Events)
+        {
+            base.AddObject("tbl_Events", tbl_Events);
         }
     
         /// <summary>
@@ -138,11 +163,11 @@ namespace SMS_EMAIL_DB_Model
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the tbl_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
+        public void AddTotbl_Users(tbl_Users tbl_Users)
         {
-            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
+            base.AddObject("tbl_Users", tbl_Users);
         }
 
         #endregion
@@ -171,7 +196,8 @@ namespace SMS_EMAIL_DB_Model
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="user_Id">Initial value of the User_Id property.</param>
         /// <param name="created_At">Initial value of the Created_At property.</param>
-        public static tbl_Emails_SMS Createtbl_Emails_SMS(global::System.Int32 id, global::System.String type, global::System.String text, global::System.Int32 user_Id, global::System.DateTime created_At)
+        /// <param name="sMS_Sent_At">Initial value of the SMS_Sent_At property.</param>
+        public static tbl_Emails_SMS Createtbl_Emails_SMS(global::System.Int64 id, global::System.String type, global::System.String text, global::System.Int32 user_Id, global::System.DateTime created_At, global::System.DateTime sMS_Sent_At)
         {
             tbl_Emails_SMS tbl_Emails_SMS = new tbl_Emails_SMS();
             tbl_Emails_SMS.Id = id;
@@ -179,6 +205,7 @@ namespace SMS_EMAIL_DB_Model
             tbl_Emails_SMS.Text = text;
             tbl_Emails_SMS.User_Id = user_Id;
             tbl_Emails_SMS.Created_At = created_At;
+            tbl_Emails_SMS.SMS_Sent_At = sMS_Sent_At;
             return tbl_Emails_SMS;
         }
 
@@ -190,7 +217,7 @@ namespace SMS_EMAIL_DB_Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Id
+        public global::System.Int64 Id
         {
             get
             {
@@ -208,8 +235,8 @@ namespace SMS_EMAIL_DB_Model
                 }
             }
         }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
         partial void OnIdChanged();
     
         /// <summary>
@@ -571,6 +598,30 @@ namespace SMS_EMAIL_DB_Model
         private global::System.DateTime _Created_At;
         partial void OnCreated_AtChanging(global::System.DateTime value);
         partial void OnCreated_AtChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime SMS_Sent_At
+        {
+            get
+            {
+                return _SMS_Sent_At;
+            }
+            set
+            {
+                OnSMS_Sent_AtChanging(value);
+                ReportPropertyChanging("SMS_Sent_At");
+                _SMS_Sent_At = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SMS_Sent_At");
+                OnSMS_Sent_AtChanged();
+            }
+        }
+        private global::System.DateTime _SMS_Sent_At;
+        partial void OnSMS_Sent_AtChanging(global::System.DateTime value);
+        partial void OnSMS_Sent_AtChanged();
 
         #endregion
     
@@ -613,6 +664,224 @@ namespace SMS_EMAIL_DB_Model
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Events")]
+        public EntityCollection<tbl_Events> tbl_Events
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SMS_EMAIL_DB_Model", Name="tbl_Events")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tbl_Events : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tbl_Events object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="email_Sms_Id">Initial value of the Email_Sms_Id property.</param>
+        /// <param name="created_At">Initial value of the Created_At property.</param>
+        public static tbl_Events Createtbl_Events(global::System.Int64 id, global::System.Int64 email_Sms_Id, global::System.DateTime created_At)
+        {
+            tbl_Events tbl_Events = new tbl_Events();
+            tbl_Events.Id = id;
+            tbl_Events.Email_Sms_Id = email_Sms_Id;
+            tbl_Events.Created_At = created_At;
+            return tbl_Events;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Email_Sms_Id
+        {
+            get
+            {
+                return _Email_Sms_Id;
+            }
+            set
+            {
+                OnEmail_Sms_IdChanging(value);
+                ReportPropertyChanging("Email_Sms_Id");
+                _Email_Sms_Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Email_Sms_Id");
+                OnEmail_Sms_IdChanged();
+            }
+        }
+        private global::System.Int64 _Email_Sms_Id;
+        partial void OnEmail_Sms_IdChanging(global::System.Int64 value);
+        partial void OnEmail_Sms_IdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Code
+        {
+            get
+            {
+                return _Code;
+            }
+            set
+            {
+                OnCodeChanging(value);
+                ReportPropertyChanging("Code");
+                _Code = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Code");
+                OnCodeChanged();
+            }
+        }
+        private global::System.String _Code;
+        partial void OnCodeChanging(global::System.String value);
+        partial void OnCodeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Created_At
+        {
+            get
+            {
+                return _Created_At;
+            }
+            set
+            {
+                OnCreated_AtChanging(value);
+                ReportPropertyChanging("Created_At");
+                _Created_At = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Created_At");
+                OnCreated_AtChanged();
+            }
+        }
+        private global::System.DateTime _Created_At;
+        partial void OnCreated_AtChanging(global::System.DateTime value);
+        partial void OnCreated_AtChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS")]
+        public tbl_Emails_SMS tbl_Emails_SMS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_Emails_SMS>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_Emails_SMS>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tbl_Emails_SMS> tbl_Emails_SMSReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tbl_Emails_SMS>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbl_Emails_SMS>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -631,15 +900,15 @@ namespace SMS_EMAIL_DB_Model
         /// Create a new tbl_Templates object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="language">Initial value of the Language property.</param>
+        /// <param name="header">Initial value of the Header property.</param>
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="createdAt">Initial value of the CreatedAt property.</param>
         /// <param name="updatedAt">Initial value of the UpdatedAt property.</param>
-        public static tbl_Templates Createtbl_Templates(global::System.Int64 id, global::System.String language, global::System.String text, global::System.DateTime createdAt, global::System.DateTime updatedAt)
+        public static tbl_Templates Createtbl_Templates(global::System.Int64 id, global::System.String header, global::System.String text, global::System.DateTime createdAt, global::System.DateTime updatedAt)
         {
             tbl_Templates tbl_Templates = new tbl_Templates();
             tbl_Templates.Id = id;
-            tbl_Templates.Language = language;
+            tbl_Templates.Header = header;
             tbl_Templates.Text = text;
             tbl_Templates.CreatedAt = createdAt;
             tbl_Templates.UpdatedAt = updatedAt;
@@ -681,24 +950,24 @@ namespace SMS_EMAIL_DB_Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Language
+        public global::System.String Header
         {
             get
             {
-                return _Language;
+                return _Header;
             }
             set
             {
-                OnLanguageChanging(value);
-                ReportPropertyChanging("Language");
-                _Language = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Language");
-                OnLanguageChanged();
+                OnHeaderChanging(value);
+                ReportPropertyChanging("Header");
+                _Header = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Header");
+                OnHeaderChanged();
             }
         }
-        private global::System.String _Language;
-        partial void OnLanguageChanging(global::System.String value);
-        partial void OnLanguageChanged();
+        private global::System.String _Header;
+        partial void OnHeaderChanging(global::System.String value);
+        partial void OnHeaderChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

@@ -53,18 +53,16 @@ public partial class SMS_Index : System.Web.UI.Page
             var currentUserId = CurrentUser.Id();
             list = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "SMS").Where(x => x.User_Id == currentUserId).OrderByDescending(x => x.Created_At).ToList();
         }
-
         foreach (var x in list)
         {
             dr = dt.NewRow();
-            dr["Sent At"] = DateTimeHelper.ConvertToString(x.Created_At.ToString());
+            dr["Sent At"] = x.SMS_Sent_At.ToString();
             dr["Sent To"] = x.Mobile_Number;
             dr["Sent By"] = x.tbl_Users.User_Name;
             dr["Status"] = x.SMS_Code_Decode;
             dr["Details"] = x.Id;
             dt.Rows.Add(dr);
         }
-
         gvSMS.DataSource = dt;
         gvSMS.DataBind();
     }

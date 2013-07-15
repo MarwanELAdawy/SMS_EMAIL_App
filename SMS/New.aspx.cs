@@ -10,9 +10,11 @@ using System.Data;
 
 public partial class SMS_New : System.Web.UI.Page
 {
-    protected SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities;
-    protected tbl_Templates tpl;
-    protected long id;
+    SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities;
+    tbl_Templates tpl;
+    tbl_Events tEvent;
+    tbl_Emails_SMS email;
+    long id;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -40,7 +42,7 @@ public partial class SMS_New : System.Web.UI.Page
 
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var currentUserId = CurrentUser.Id();
-        var email = new tbl_Emails_SMS { 
+        email = new tbl_Emails_SMS { 
             Claim_Number = txtClaimNumber.Text,
             Policy_Number = txtPolicyNumber.Text,
             TP_Name = txtTpName.Text,
@@ -55,10 +57,17 @@ public partial class SMS_New : System.Web.UI.Page
             SMS_Language = rblSMSLanguage.SelectedValue,
             User_Id = currentUserId,
             Created_At = DateTime.Now,
+            SMS_Sent_At = DateTime.Now,
             TP_ID = txtTPID.Text,
             TemplateId = id
         };
-        _sms_EMAIL_DB_Entities.AddTotbl_Emails_SMS(email);
+        tEvent = new tbl_Events { 
+            Created_At = DateTime.Now,
+            Code = sms_code,
+            Status = sms_code_decode
+        };
+        tEvent.tbl_Emails_SMS = email;
+        _sms_EMAIL_DB_Entities.AddTotbl_Events(tEvent);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Please check SMS status !";
 

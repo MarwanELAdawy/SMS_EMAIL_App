@@ -23,7 +23,6 @@ public partial class Admin_Templates_index : System.Web.UI.Page
     {
         entity = new SMS_EMAIL_DB_Entities();
         tmp = new tbl_Templates();
-        tmp.Language = ((DropDownList)gvTemplates.FooterRow.FindControl("ddlLanguageNew")).SelectedValue;
         tmp.Text = ((TextBox)gvTemplates.FooterRow.FindControl("txtTextNew")).Text;
         tmp.CreatedAt = DateTime.Now;
         tmp.UpdatedAt = DateTime.Now;
@@ -49,7 +48,6 @@ public partial class Admin_Templates_index : System.Web.UI.Page
         Id = long.Parse(((HiddenField)gvTemplates.Rows[e.RowIndex].FindControl("hdnFldId")).Value);
         entity = new SMS_EMAIL_DB_Entities();
         tmp = entity.tbl_Templates.Where(x => x.Id == Id).First();
-        tmp.Language = ((DropDownList)gvTemplates.Rows[e.RowIndex].FindControl("ddlLanguage")).SelectedValue;
         tmp.Text = ((TextBox)gvTemplates.Rows[e.RowIndex].FindControl("txtText")).Text;
         tmp.UpdatedAt = DateTime.Now;
         entity.SaveChanges();
