@@ -42,53 +42,32 @@ public static class StringHelper
         string ConvertedResponse = "";
         switch (response)
         {
-            case "0":
-                ConvertedResponse = "Success";
+            case "100":
+                ConvertedResponse = "Missing parameters (not exist or empty) Username + password.";
                 break;
-            case "101":
-                ConvertedResponse = "Parameter are missing";
+            case "110":
+                ConvertedResponse = "Account not exist (wrong username or password). ";
                 break;
-            case "104":
-                ConvertedResponse = "Username or password is missing or you account is on hold";
+            case "111":
+                ConvertedResponse = "The account not activated.";
                 break;
-            case "105":
-                ConvertedResponse = "Credits are not available";
+            case "112":
+                ConvertedResponse = "Blocked account. ";
                 break;
-            case "106":
-                ConvertedResponse = "Wrong unicode";
+            case "113":
+                ConvertedResponse = "Not enough balance.";
                 break;
-            case "107":
-                ConvertedResponse = "Blocked sender name";
+            case "114":
+                ConvertedResponse = "The service not available for now";
                 break;
-            case "108":
-                ConvertedResponse = "Missing sneder name";
+            case "115":
+                ConvertedResponse = "The sender not available (if user have no opened sender). ";
                 break;
-            case "109":
-                ConvertedResponse = "Forbidden word";
-                break;
-            case "1010":
-                ConvertedResponse = "Wrong SMS content format or URL format is not correct or Mobile number is blocked";
-                break;
-            case "1011":
-                ConvertedResponse = "Username is missing";
-                break;
-            case "1012":
-                ConvertedResponse = "Password is missing";
-                break;
-            case "1013":
-                ConvertedResponse = "Mobile number is missing";
-                break;
-            case "1014":
-                ConvertedResponse = "Unicode type is missing";
-                break;
-            case "1015":
-                ConvertedResponse = "SMS content is empty";
-                break;
-            case "1016":
-                ConvertedResponse = "Sender name is empty";
+            case "116":
+                ConvertedResponse = "Invalid sender name.";
                 break;
             default:
-                ConvertedResponse = response;
+                ConvertedResponse = "Success";
                 break;
         }
         return ConvertedResponse;

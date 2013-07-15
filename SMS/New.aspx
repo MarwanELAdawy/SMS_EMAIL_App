@@ -61,6 +61,20 @@
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </p>
         <p>
+            <asp:RadioButtonList ID="rblSMSLanguage" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Selected="True">English</asp:ListItem>
+                <asp:ListItem>Arabic</asp:ListItem>
+            </asp:RadioButtonList>
+        </p>
+        <p>
+            <label>
+                Message</label>
+            <asp:TextBox ID="txtText" runat="server" TextMode="MultiLine"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvText" runat="server" ControlToValidate="txtText"
+                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+        </p>
+        <!--
+        <p>
             <label>
                 Template</label>
             <asp:DropDownList ID="ddlTemplate" runat="server">
@@ -68,6 +82,7 @@
             <asp:RequiredFieldValidator ID="rfvTemplate" runat="server" ControlToValidate="ddlTemplate"
                 ForeColor="#FF3300" SetFocusOnError="True" InitialValue="0">*</asp:RequiredFieldValidator>
         </p>
+        -->
         <p>
             <asp:Button ID="btnSend" runat="server" OnClick="btnSend_Click" Text="Send" CssClass="btn btn-save" />
             <asp:Button ID="btnCancel" runat="server" CausesValidation="False" Text="Cancel"
