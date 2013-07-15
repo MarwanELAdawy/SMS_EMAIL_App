@@ -35,10 +35,7 @@ public partial class SMS_New : System.Web.UI.Page
         {
             //message = StringHelper.StringToHexCode(message);
         }
-
-        MyWebRequest myRequest = new MyWebRequest("http://www.jawalbsms.ws/api.php/sendsms?", "POST", "user=acig111&pass=1234&to=" + phoneNumber + "&message=" + message + "&sender=Acig");
-
-        var sms_code = myRequest.GetResponse();
+        var sms_code = SmsSender.Send(phoneNumber, message);
         var sms_code_decode = StringHelper.ConvertResponseCode(sms_code);
 
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
@@ -49,7 +46,7 @@ public partial class SMS_New : System.Web.UI.Page
             TP_Name = txtTpName.Text,
             Email = txtEmail.Text,
             Mobile_Number = phoneNumber, 
-            Text = txtText.Text,
+            Text = message,
             //Text = tpl.Text,
             Type = "SMS",
             SMS_Code = sms_code, 

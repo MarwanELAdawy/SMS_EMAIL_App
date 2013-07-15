@@ -10,6 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 <fieldset>
+    <asp:HiddenField ID="hdnFldSMSId" runat="server" />
  <legend>Sent SMS Details</legend>      
  <p>
   <span>Sent At</span>
@@ -60,6 +61,9 @@
   <br />
   <%= sms.Text %>
   </p>
+    <asp:Button ID="btnResend" runat="server" Text="Resend" 
+        OnClientClick="return confirm('Are you sure?')" CssClass="btn btn-success" 
+        onclick="btnResend_Click" />
   <h3><a href="Index.aspx">Back</a></h3>
   </fieldset>
 </asp:Content>
