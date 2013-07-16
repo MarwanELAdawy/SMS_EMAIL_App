@@ -74,22 +74,6 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Bulk_SMS> tbl_Bulk_SMS
-        {
-            get
-            {
-                if ((_tbl_Bulk_SMS == null))
-                {
-                    _tbl_Bulk_SMS = base.CreateObjectSet<tbl_Bulk_SMS>("tbl_Bulk_SMS");
-                }
-                return _tbl_Bulk_SMS;
-            }
-        }
-        private ObjectSet<tbl_Bulk_SMS> _tbl_Bulk_SMS;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
         {
             get
@@ -150,17 +134,25 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Users> _tbl_Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Bulk_SMS> tbl_Bulk_SMS
+        {
+            get
+            {
+                if ((_tbl_Bulk_SMS == null))
+                {
+                    _tbl_Bulk_SMS = base.CreateObjectSet<tbl_Bulk_SMS>("tbl_Bulk_SMS");
+                }
+                return _tbl_Bulk_SMS;
+            }
+        }
+        private ObjectSet<tbl_Bulk_SMS> _tbl_Bulk_SMS;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Bulk_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
-        {
-            base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -192,6 +184,14 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Users(tbl_Users tbl_Users)
         {
             base.AddObject("tbl_Users", tbl_Users);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Bulk_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
+        {
+            base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
         }
 
         #endregion
@@ -334,6 +334,54 @@ namespace SMS_EMAIL_DB_Model
         private global::System.String _Status;
         partial void OnStatusChanging(global::System.String value);
         partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> Template_Id
+        {
+            get
+            {
+                return _Template_Id;
+            }
+            set
+            {
+                OnTemplate_IdChanging(value);
+                ReportPropertyChanging("Template_Id");
+                _Template_Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Template_Id");
+                OnTemplate_IdChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _Template_Id;
+        partial void OnTemplate_IdChanging(Nullable<global::System.Int64> value);
+        partial void OnTemplate_IdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Output_File_Path
+        {
+            get
+            {
+                return _Output_File_Path;
+            }
+            set
+            {
+                OnOutput_File_PathChanging(value);
+                ReportPropertyChanging("Output_File_Path");
+                _Output_File_Path = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Output_File_Path");
+                OnOutput_File_PathChanged();
+            }
+        }
+        private global::System.String _Output_File_Path;
+        partial void OnOutput_File_PathChanging(global::System.String value);
+        partial void OnOutput_File_PathChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
