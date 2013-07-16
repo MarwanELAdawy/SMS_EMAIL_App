@@ -23,9 +23,11 @@ public partial class Admin_Templates_index : System.Web.UI.Page
     {
         entity = new SMS_EMAIL_DB_Entities();
         tmp = new tbl_Templates();
-        tmp.Text = ((TextBox)gvTemplates.FooterRow.FindControl("txtTextNew")).Text;
-        tmp.CreatedAt = DateTime.Now;
-        tmp.UpdatedAt = DateTime.Now;
+        tmp.Type = ddlNewType.SelectedValue;
+        tmp.Name = txtNewName.Text;
+        tmp.Text = txtTextNew.Text;
+        tmp.Created_At = DateTime.Now;
+        tmp.Updated_At = DateTime.Now;
         entity.AddTotbl_Templates(tmp);
         entity.SaveChanges();
         BindGridView();
@@ -35,8 +37,8 @@ public partial class Admin_Templates_index : System.Web.UI.Page
     {
         gvTemplates.EditIndex = e.NewEditIndex;
         BindGridView();
-        var ddl = ((DropDownList)gvTemplates.Rows[e.NewEditIndex].FindControl("ddlLanguage"));
-        ddl.SelectedValue = ((HiddenField)gvTemplates.Rows[e.NewEditIndex].FindControl("hdnFldLanguage")).Value;
+        var ddl = ((DropDownList)gvTemplates.Rows[e.NewEditIndex].FindControl("ddlType"));
+        ddl.SelectedValue = ((HiddenField)gvTemplates.Rows[e.NewEditIndex].FindControl("hdnFldType")).Value;
     }
     protected void CancelEdit(object sender, GridViewCancelEditEventArgs e)
     {
@@ -48,8 +50,10 @@ public partial class Admin_Templates_index : System.Web.UI.Page
         Id = long.Parse(((HiddenField)gvTemplates.Rows[e.RowIndex].FindControl("hdnFldId")).Value);
         entity = new SMS_EMAIL_DB_Entities();
         tmp = entity.tbl_Templates.Where(x => x.Id == Id).First();
+        tmp.Type = ((DropDownList)gvTemplates.Rows[e.RowIndex].FindControl("ddlType")).Text;
+        tmp.Name = ((TextBox)gvTemplates.Rows[e.RowIndex].FindControl("txtName")).Text;
         tmp.Text = ((TextBox)gvTemplates.Rows[e.RowIndex].FindControl("txtText")).Text;
-        tmp.UpdatedAt = DateTime.Now;
+        tmp.Updated_At = DateTime.Now;
         entity.SaveChanges();
         gvTemplates.EditIndex = -1;
         BindGridView();

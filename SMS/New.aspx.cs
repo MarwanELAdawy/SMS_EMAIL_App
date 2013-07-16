@@ -59,7 +59,7 @@ public partial class SMS_New : System.Web.UI.Page
             Created_At = DateTime.Now,
             SMS_Sent_At = DateTime.Now,
             TP_ID = txtTPID.Text,
-            TemplateId = id
+            Template_Id = id
         };
         tEvent = new tbl_Events { 
             Created_At = DateTime.Now,
