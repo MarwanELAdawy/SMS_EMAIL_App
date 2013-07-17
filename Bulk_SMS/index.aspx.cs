@@ -53,6 +53,7 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         var data = from bs in _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS
                    join t in _SMS_EMAIL_DB_Entities.tbl_Templates
                    on bs.Template_Id equals t.Id
+                   orderby bs.Created_At descending
                    select new
                    {
                        Id = bs.Id,
