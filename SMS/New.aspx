@@ -88,5 +88,13 @@
             <asp:Button ID="btnCancel" runat="server" CausesValidation="False" Text="Cancel"
                 CssClass="btn btn-cancel" OnClick="btnCancel_Click" />
         </p>
+        <div class="alert alert-success" id="duplicateSmsDiv" runat="server">
+            <h4>
+            SMS for this policy has been sent alread !.
+            <asp:Button ID="btnSendDuplicate" runat="server" OnClick="btnSendDuplicate_Click" Text="Send Anyway..." CssClass="btn btn-save" />
+             </h4>
+            <div class="clear">
+            </div>
+        </div>
     </fieldset>
 </asp:Content>

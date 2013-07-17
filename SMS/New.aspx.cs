@@ -19,6 +19,7 @@ public partial class SMS_New : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            duplicateSmsDiv.Visible = false;
             BindDdl();
         }
     }
@@ -28,6 +29,32 @@ public partial class SMS_New : System.Web.UI.Page
         var phoneNumber = "966" + txtMobile.Text.Trim();
         //id = long.Parse(ddlTemplate.SelectedValue);
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
+        var count = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Mobile_Number == phoneNumber).Count();
+        if (count == 0)
+        {
+            sendSMS(phoneNumber);
+            return;
+        }
+        btnSend.Visible = false;
+        duplicateSmsDiv.Visible = true;
+    }
+
+    protected void btnSendDuplicate_Click(object sender, EventArgs e)
+    {
+        var phoneNumber = "966" + txtMobile.Text.Trim();
+        //id = long.Parse(ddlTemplate.SelectedValue);
+        _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
+        sendSMS(phoneNumber);
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Index.aspx");
+    }
+
+    protected void sendSMS(string phoneNumber)
+    {
+        //id = long.Parse(ddlTemplate.SelectedValue);
         //tpl = _sms_EMAIL_DB_Entities.tbl_Templates.Where(x => x.Id == id).First();
         //var message =  tpl.Text.Trim();
         var message = txtText.Text.ToString().Trim();
@@ -42,16 +69,17 @@ public partial class SMS_New : System.Web.UI.Page
 
         _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var currentUserId = CurrentUser.Id();
-        email = new tbl_Emails_SMS { 
+        email = new tbl_Emails_SMS
+        {
             Claim_Number = txtClaimNumber.Text,
             Policy_Number = txtPolicyNumber.Text,
             TP_Name = txtTpName.Text,
             Email = txtEmail.Text,
-            Mobile_Number = phoneNumber, 
+            Mobile_Number = phoneNumber,
             Text = message,
             //Text = tpl.Text,
             Type = "SMS",
-            SMS_Code = sms_code, 
+            SMS_Code = sms_code,
             SMS_Code_Decode = sms_code_decode,
             //SMS_Language = tpl.Language,
             SMS_Language = rblSMSLanguage.SelectedValue,
@@ -61,7 +89,8 @@ public partial class SMS_New : System.Web.UI.Page
             TP_ID = txtTPID.Text,
             Template_Id = id
         };
-        tEvent = new tbl_Events { 
+        tEvent = new tbl_Events
+        {
             Created_At = DateTime.Now,
             Code = sms_code,
             Status = sms_code_decode
@@ -71,11 +100,6 @@ public partial class SMS_New : System.Web.UI.Page
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Please check SMS status !";
 
-        Response.Redirect("Index.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
         Response.Redirect("Index.aspx");
     }
 
