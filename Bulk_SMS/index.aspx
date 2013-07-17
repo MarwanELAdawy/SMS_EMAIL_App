@@ -24,7 +24,7 @@
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SMS_EMAIL_DBConnectionString %>"
                     SelectCommand="SELECT [Id], [Name] FROM [tbl_Templates] WHERE ([Type] = @Type) ORDER BY [Created_At]">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="Bulk_SMS" Name="Type" Type="String" />
+                        <asp:Parameter DefaultValue="BULK_SMS" Name="Type" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

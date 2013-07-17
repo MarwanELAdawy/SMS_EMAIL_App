@@ -14,7 +14,7 @@
                 <br />
                 <asp:DropDownList ID="ddlNewType" runat="server">
                     <asp:ListItem>SMS</asp:ListItem>
-                    <asp:ListItem>Bulk_SMS</asp:ListItem>
+                    <asp:ListItem>BULK_SMS</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>
