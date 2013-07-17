@@ -41,12 +41,12 @@
         OnRowEditing="EditTemplate" OnRowUpdating="UpdateTemplate" OnRowCancelingEdit="CancelEdit"
         EmptyDataText="No Templates" CssClass="table table-bordered">
         <Columns>
-            <asp:TemplateField HeaderText="Langauage">
+            <asp:TemplateField HeaderText="Name">
                 <ItemTemplate>
-                    <asp:Label ID="lblType" runat="server" Text='<%# Eval("Type")%>'></asp:Label>
+                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name")%>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Type") %>' />
+                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Name") %>' />
                     <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
                     <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
                         <asp:ListItem>SMS</asp:ListItem>
@@ -54,9 +54,9 @@
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Name">
+            <asp:TemplateField HeaderText="Type">
                 <ItemTemplate>
-                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name")%>'></asp:Label>
+                    <asp:Label ID="lblType" runat="server" Text='<%# Eval("Type")%>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
