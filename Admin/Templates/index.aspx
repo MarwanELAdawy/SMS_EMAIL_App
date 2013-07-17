@@ -14,7 +14,7 @@
                 <br />
                 <asp:DropDownList ID="ddlNewType" runat="server">
                     <asp:ListItem>SMS</asp:ListItem>
-                    <asp:ListItem>Marketing</asp:ListItem>
+                    <asp:ListItem>Bulk_SMS</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>
@@ -50,7 +50,7 @@
                     <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
                     <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
                         <asp:ListItem>SMS</asp:ListItem>
-                        <asp:ListItem>Marketing</asp:ListItem>
+                        <asp:ListItem>BULK_SMS</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
