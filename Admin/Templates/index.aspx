@@ -46,12 +46,9 @@
                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name")%>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Name") %>' />
-                    <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
-                    <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
-                        <asp:ListItem>SMS</asp:ListItem>
-                        <asp:ListItem>BULK_SMS</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName"
+                        ValidationGroup="edit_template" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Type">
@@ -59,9 +56,12 @@
                     <asp:Label ID="lblType" runat="server" Text='<%# Eval("Type")%>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName"
-                        ValidationGroup="edit_template" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Name") %>' />
+                    <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
+                    <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
+                        <asp:ListItem>SMS</asp:ListItem>
+                        <asp:ListItem>BULK_SMS</asp:ListItem>
+                    </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Text">
