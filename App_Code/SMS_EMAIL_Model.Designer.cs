@@ -219,15 +219,19 @@ namespace SMS_EMAIL_DB_Model
         /// <param name="file_Name">Initial value of the File_Name property.</param>
         /// <param name="file_Path">Initial value of the File_Path property.</param>
         /// <param name="status">Initial value of the Status property.</param>
+        /// <param name="template_Id">Initial value of the Template_Id property.</param>
+        /// <param name="user_Id">Initial value of the User_Id property.</param>
         /// <param name="created_At">Initial value of the Created_At property.</param>
         /// <param name="updated_At">Initial value of the Updated_At property.</param>
-        public static tbl_Bulk_SMS Createtbl_Bulk_SMS(global::System.Int64 id, global::System.String file_Name, global::System.String file_Path, global::System.String status, global::System.DateTime created_At, global::System.DateTime updated_At)
+        public static tbl_Bulk_SMS Createtbl_Bulk_SMS(global::System.Int64 id, global::System.String file_Name, global::System.String file_Path, global::System.String status, global::System.Int64 template_Id, global::System.Int32 user_Id, global::System.DateTime created_At, global::System.DateTime updated_At)
         {
             tbl_Bulk_SMS tbl_Bulk_SMS = new tbl_Bulk_SMS();
             tbl_Bulk_SMS.Id = id;
             tbl_Bulk_SMS.File_Name = file_Name;
             tbl_Bulk_SMS.File_Path = file_Path;
             tbl_Bulk_SMS.Status = status;
+            tbl_Bulk_SMS.Template_Id = template_Id;
+            tbl_Bulk_SMS.User_Id = user_Id;
             tbl_Bulk_SMS.Created_At = created_At;
             tbl_Bulk_SMS.Updated_At = updated_At;
             return tbl_Bulk_SMS;
@@ -338,9 +342,9 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int64> Template_Id
+        public global::System.Int64 Template_Id
         {
             get
             {
@@ -355,8 +359,8 @@ namespace SMS_EMAIL_DB_Model
                 OnTemplate_IdChanged();
             }
         }
-        private Nullable<global::System.Int64> _Template_Id;
-        partial void OnTemplate_IdChanging(Nullable<global::System.Int64> value);
+        private global::System.Int64 _Template_Id;
+        partial void OnTemplate_IdChanging(global::System.Int64 value);
         partial void OnTemplate_IdChanged();
     
         /// <summary>
@@ -382,6 +386,54 @@ namespace SMS_EMAIL_DB_Model
         private global::System.String _Output_File_Path;
         partial void OnOutput_File_PathChanging(global::System.String value);
         partial void OnOutput_File_PathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Output_File_Name
+        {
+            get
+            {
+                return _Output_File_Name;
+            }
+            set
+            {
+                OnOutput_File_NameChanging(value);
+                ReportPropertyChanging("Output_File_Name");
+                _Output_File_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Output_File_Name");
+                OnOutput_File_NameChanged();
+            }
+        }
+        private global::System.String _Output_File_Name;
+        partial void OnOutput_File_NameChanging(global::System.String value);
+        partial void OnOutput_File_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 User_Id
+        {
+            get
+            {
+                return _User_Id;
+            }
+            set
+            {
+                OnUser_IdChanging(value);
+                ReportPropertyChanging("User_Id");
+                _User_Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("User_Id");
+                OnUser_IdChanged();
+            }
+        }
+        private global::System.Int32 _User_Id;
+        partial void OnUser_IdChanging(global::System.Int32 value);
+        partial void OnUser_IdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

@@ -16,6 +16,7 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         if (!IsPostBack)
         {
             BindGridView();
+            Session["NoticeMessage"] = FileHelper.GetFilePath(""); ;
         }
     }
 
@@ -28,7 +29,8 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
             return;
         }
         var outputFile = FileHelper.SaveFile(postedFile);
-
+        long tmpId = long.Parse(ddlTemplate.SelectedValue);
+        int userId = CurrentUser.Id();
         _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         bulk_SMS = new tbl_Bulk_SMS
         {
@@ -36,7 +38,9 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
             File_Name = outputFile["FileName"].ToString(),
             File_Path = outputFile["FilePath"].ToString(),
             Status = "New",
-            Updated_At = DateTime.Now
+            Updated_At = DateTime.Now,
+            Template_Id = tmpId,
+            User_Id = userId
         };
         _SMS_EMAIL_DB_Entities.AddTotbl_Bulk_SMS(bulk_SMS);
         _SMS_EMAIL_DB_Entities.SaveChanges();
@@ -57,9 +61,41 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
                        InputFileName = bs.File_Name,
                        InputFilePath = bs.File_Path,
                        OutputFilePath = bs.Output_File_Path,
+                       OutputFileName = bs.Output_File_Name,
+                       Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
                        Status = bs.Status
                    };
-        gvSMS.DataSource = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.OrderByDescending(x => x.Created_At).ToList();
+        gvSMS.DataSource = data;
         gvSMS.DataBind();
+    }
+
+    protected void lkBtnInputDownload_Click(object sender, EventArgs e)
+    {
+        var lkBtn = (LinkButton)sender;
+        var id = long.Parse(lkBtn.CommandArgument.ToString());
+        _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
+        bulk_SMS = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.Where(x => x.Id == id).First();
+        sendFile(bulk_SMS.File_Name, bulk_SMS.File_Path);
+    }
+
+    protected void lkBtnOutputDownload_Click(object sender, EventArgs e)
+    {
+        var lkBtn = (LinkButton)sender;
+        var id = long.Parse(lkBtn.CommandArgument.ToString());
+        _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
+        bulk_SMS = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.Where(x => x.Id == id).First();
+        sendFile(bulk_SMS.File_Name, bulk_SMS.File_Path);
+    }
+
+    protected void sendFile(string FileName, string FilePath)
+    {
+        System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
+        response.ClearContent();
+        response.Clear();
+        response.ContentType = "text/plain";
+        response.AddHeader("Content-Disposition", "attachment; filename=" + FileName + ";");
+        response.TransmitFile(FilePath);
+        response.Flush();
+        response.End();
     }
 }

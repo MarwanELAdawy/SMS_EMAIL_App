@@ -15,8 +15,8 @@
             </td>
             <td>
                 Template
-                <asp:DropDownList ID="ddlTemplate" runat="server" DataSourceID="SqlDataSource1"
-                    DataTextField="Name" DataValueField="Id" AppendDataBoundItems="True">
+                <asp:DropDownList ID="ddlTemplate" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name"
+                    DataValueField="Id" AppendDataBoundItems="True">
                     <asp:ListItem Value="0">Select</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfvTemplate" runat="server" ControlToValidate="ddlTemplate"
@@ -43,12 +43,17 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Created At">
                 <ItemTemplate>
-                    <asp:Label ID="lblCreatedAt" runat="server" Text='<%# Eval("Created_At")%>'></asp:Label>
+                    <asp:Label ID="lblCreatedAt" runat="server" Text='<%# Eval("CreatedAt")%>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Input File">
                 <ItemTemplate>
-                    <asp:Label ID="lblInputFile" runat="server" Text='<%# Eval("File_Name")%>'></asp:Label>
+                    <asp:LinkButton ID="lkBtnInputDownload" runat="server" onclick="lkBtnInputDownload_Click" CausesValidation="false" CommandArgument='<%# Eval("Id") %>' ><%# Eval("InputFileName") %></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Output File">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lkBtnOutputDownload" runat="server" onclick="lkBtnOutputDownload_Click" CausesValidation="false" CommandArgument='<%# Eval("Id") %>' Visible='<%# Eval("Visible") %>' ><%# Eval("OutputFileName") %></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Status">
