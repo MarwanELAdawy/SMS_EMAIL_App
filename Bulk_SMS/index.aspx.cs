@@ -50,24 +50,50 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
     protected void BindGridView()
     {
         _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        var data = from bs in _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS
-                   join t in _SMS_EMAIL_DB_Entities.tbl_Templates
-                   on bs.Template_Id equals t.Id
-                   orderby bs.Created_At descending
-                   select new
-                   {
-                       Id = bs.Id,
-                       TemplateName = t.Name,
-                       CreatedAt = bs.Created_At,
-                       InputFileName = bs.File_Name,
-                       InputFilePath = bs.File_Path,
-                       OutputFilePath = bs.Output_File_Path,
-                       OutputFileName = bs.Output_File_Name,
-                       Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
-                       Status = bs.Status
-                   };
-        gvSMS.DataSource = data;
-        gvSMS.DataBind();
+        if (CurrentUser.Role() == "Admin")
+        {
+            var data = from bs in _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS
+                       join t in _SMS_EMAIL_DB_Entities.tbl_Templates
+                       on bs.Template_Id equals t.Id
+                       orderby bs.Created_At descending
+                       select new
+                       {
+                           Id = bs.Id,
+                           TemplateName = t.Name,
+                           CreatedAt = bs.Created_At,
+                           InputFileName = bs.File_Name,
+                           InputFilePath = bs.File_Path,
+                           OutputFilePath = bs.Output_File_Path,
+                           OutputFileName = bs.Output_File_Name,
+                           Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
+                           Status = bs.Status
+                       };
+            gvSMS.DataSource = data;
+            gvSMS.DataBind();
+        }
+        else
+        {
+            var id = CurrentUser.Id();
+            var data = from bs in _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS
+                       join t in _SMS_EMAIL_DB_Entities.tbl_Templates
+                       on bs.Template_Id equals t.Id
+                       where bs.User_Id == id
+                       orderby bs.Created_At descending
+                       select new
+                       {
+                           Id = bs.Id,
+                           TemplateName = t.Name,
+                           CreatedAt = bs.Created_At,
+                           InputFileName = bs.File_Name,
+                           InputFilePath = bs.File_Path,
+                           OutputFilePath = bs.Output_File_Path,
+                           OutputFileName = bs.Output_File_Name,
+                           Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
+                           Status = bs.Status
+                       };
+            gvSMS.DataSource = data;
+            gvSMS.DataBind();
+        }
     }
 
     protected void lkBtnInputDownload_Click(object sender, EventArgs e)
