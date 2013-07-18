@@ -56,7 +56,7 @@
                     <asp:Label ID="lblType" runat="server" Text='<%# Eval("Type")%>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Name") %>' />
+                    <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Type") %>' />
                     <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
                     <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
                         <asp:ListItem>SMS</asp:ListItem>

@@ -16,7 +16,6 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         if (!IsPostBack)
         {
             BindGridView();
-            Session["NoticeMessage"] = FileHelper.GetFilePath(""); ;
         }
     }
 
