@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="New.aspx.cs" Inherits="SMS_New" %>
+    CodeFile="New.aspx.cs" Inherits="SMS_New" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <style type="text/css">
@@ -90,8 +90,8 @@
         </p>
         <div class="alert alert-success" id="duplicateSmsDiv" runat="server">
             <h4>
-            SMS for this policy has been sent alread !.
-            <asp:Button ID="btnSendDuplicate" runat="server" OnClick="btnSendDuplicate_Click" Text="Send Anyway..." CssClass="btn btn-save" />
+            SMS for this mobile number has already been sent !.
+            <asp:Button ID="btnSendDuplicate" runat="server" OnClick="btnSendDuplicate_Click" Text="Continue Sending..." CssClass="btn btn-save" />
              </h4>
             <div class="clear">
             </div>

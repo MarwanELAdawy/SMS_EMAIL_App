@@ -110,7 +110,7 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         var id = long.Parse(lkBtn.CommandArgument.ToString());
         _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         bulk_SMS = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.Where(x => x.Id == id).First();
-        sendFile(bulk_SMS.File_Name, bulk_SMS.File_Path);
+        sendFile(bulk_SMS.Output_File_Name, bulk_SMS.Output_File_Path);
     }
 
     protected void sendFile(string FileName, string FilePath)
