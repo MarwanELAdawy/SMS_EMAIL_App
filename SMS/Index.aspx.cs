@@ -75,6 +75,12 @@ public partial class SMS_Index : System.Web.UI.Page
             case "Sent By":
                 ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.tbl_Users.User_Name.Contains(txtField.Text));
                 break;
+            case "Policy No.":
+                ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Policy_Number.Contains(txtField.Text));
+                break;
+            case "Claim No.":
+                ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Claim_Number.Contains(txtField.Text));
+                break;
             default: break;
         }
         list = ls.OrderByDescending(x => x.Created_At).ToList();
@@ -100,7 +106,7 @@ public partial class SMS_Index : System.Web.UI.Page
         table.Columns.Add("Text");
         table.Columns.Add("Value");
         DataRow dr;
-        List<string> lst = new List<string> { "None / All", "Mobile Number", "Date" };
+        List<string> lst = new List<string> { "None / All", "Policy No.", "Claim No.", "Mobile Number", "Date", };
         if (CurrentUser.Role() == "Admin")
         {
             lst.Add("Sent By");
