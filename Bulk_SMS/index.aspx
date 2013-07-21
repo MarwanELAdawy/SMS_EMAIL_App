@@ -4,9 +4,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
-    <h3>
+    <h3 class="left">
         Bulk SMS
     </h3>
+    <a href="search.aspx" class="right btn btn-info">
+      Search
+    </a>
+    <div class="clear"></div>
     <table class="table table-bordered">
         <tr>
             <td>

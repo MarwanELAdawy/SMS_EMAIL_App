@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using SMS_EMAIL_DB_Model;
 using System.Data;
 
-public partial class SMS_Index : System.Web.UI.Page
+public partial class Bulk_SMS_search : System.Web.UI.Page
 {
     protected SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities;
     protected void Page_Load(object sender, EventArgs e)
@@ -27,14 +27,14 @@ public partial class SMS_Index : System.Web.UI.Page
     protected void gvSMS_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType != DataControlRowType.DataRow) return;
-        LinkButton lb;
-        lb = new LinkButton();
-        lb.CausesValidation = false;
-        lb.CommandArgument = e.Row.Cells[4].Text;
-        lb.CommandName = "NumClick";
-        lb.Text = "Details";
-        lb.PostBackUrl = "Details.aspx?id=" + e.Row.Cells[4].Text;
-        e.Row.Cells[4].Controls.Add((Control)lb);
+        //LinkButton lb;
+        //lb = new LinkButton();
+        //lb.CausesValidation = false;
+        //lb.CommandArgument = e.Row.Cells[4].Text;
+        //lb.CommandName = "NumClick";
+        //lb.Text = "Details";
+        //lb.PostBackUrl = "Details.aspx?id=" + e.Row.Cells[4].Text;
+        //e.Row.Cells[4].Controls.Add((Control)lb);
     }
 
     protected void BindDataToGridView()
@@ -47,18 +47,18 @@ public partial class SMS_Index : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Sent To", typeof(string)));
         dt.Columns.Add(new DataColumn("Sent By", typeof(string)));
         dt.Columns.Add(new DataColumn("Status", typeof(string)));
-        dt.Columns.Add(new DataColumn("Details", typeof(string)));
+        dt.Columns.Add(new DataColumn("BULK SMS ID", typeof(string)));
 
         IQueryable<tbl_Emails_SMS> ls;
         List<tbl_Emails_SMS> list;
         if (CurrentUser.Role() == "Admin")
         {
-            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "SMS");
+            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "BULK_SMS");
         }
         else
         {
             var currentUserId = CurrentUser.Id();
-            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "SMS").Where(x => x.User_Id == currentUserId);
+            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "BULK_SMS").Where(x => x.User_Id == currentUserId);
         }
 
         switch (ddlSearchField.SelectedValue)
@@ -92,7 +92,7 @@ public partial class SMS_Index : System.Web.UI.Page
             dr["Sent To"] = x.Mobile_Number;
             dr["Sent By"] = x.tbl_Users.User_Name;
             dr["Status"] = x.SMS_Code_Decode;
-            dr["Details"] = x.Id;
+            dr["BULK SMS ID"] = x.Bulk_Sms_Id;
             dt.Rows.Add(dr);
         }
         gvSMS.DataSource = dt;
