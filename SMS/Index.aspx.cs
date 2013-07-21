@@ -68,8 +68,8 @@ public partial class SMS_Index : System.Web.UI.Page
                 break;
             case "Date":
                 var date = txtSentDate.Text;
-                var startDate = DateTime.Parse(date + " 00:00:00");
-                var endDate = DateTime.Parse(date + " 23:59:59");
+                DateTime startDate, endDate;
+                DateTimeHelper.GetStartAndEndTime(date, out startDate, out endDate);
                 ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.SMS_Sent_At >= startDate).Where(x => x.SMS_Sent_At <= endDate);
                 break;
             case "Sent By":
