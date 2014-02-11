@@ -31,6 +31,8 @@
           <Property Name="Template_Id" Type="bigint" Nullable="false" />
           <Property Name="Output_File_Path" Type="nvarchar(max)" />
           <Property Name="Output_File_Name" Type="nvarchar(max)" />
+          <Property Name="Error_File_Path" Type="nvarchar" MaxLength="20" />
+          <Property Name="Error_File_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Created_At" Type="datetime" Nullable="false" />
           <Property Name="Updated_At" Type="datetime" Nullable="false" />
@@ -233,6 +235,8 @@
           <Property Type="Int64" Name="Template_Id" Nullable="false" />
           <Property Type="String" Name="Output_File_Path" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Output_File_Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Error_File_Path" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Error_File_Name" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="User_Id" Nullable="false" />
           <Property Type="DateTime" Name="Created_At" Nullable="false" />
           <Property Type="DateTime" Name="Updated_At" Nullable="false" />
@@ -311,6 +315,8 @@
                 <ScalarProperty Name="Updated_At" ColumnName="Updated_At" />
                 <ScalarProperty Name="Created_At" ColumnName="Created_At" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Error_File_Name" ColumnName="Error_File_Name" />
+                <ScalarProperty Name="Error_File_Path" ColumnName="Error_File_Path" />
                 <ScalarProperty Name="Output_File_Name" ColumnName="Output_File_Name" />
                 <ScalarProperty Name="Output_File_Path" ColumnName="Output_File_Path" />
                 <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
@@ -354,7 +360,7 @@
           <ConnectorPoint PointX="4.5" PointY="3.4612939453125016" />
           <ConnectorPoint PointX="5.25" PointY="3.4612939453125016" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" Width="1.5" PointX="5.375" PointY="5.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" Width="1.5" PointX="5.375" PointY="5.75" Height="3.3263964843749996" />
       </Diagram>
     </Diagrams>
   </Designer>

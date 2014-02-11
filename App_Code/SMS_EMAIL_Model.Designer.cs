@@ -414,6 +414,54 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Error_File_Path
+        {
+            get
+            {
+                return _Error_File_Path;
+            }
+            set
+            {
+                OnError_File_PathChanging(value);
+                ReportPropertyChanging("Error_File_Path");
+                _Error_File_Path = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Error_File_Path");
+                OnError_File_PathChanged();
+            }
+        }
+        private global::System.String _Error_File_Path;
+        partial void OnError_File_PathChanging(global::System.String value);
+        partial void OnError_File_PathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Error_File_Name
+        {
+            get
+            {
+                return _Error_File_Name;
+            }
+            set
+            {
+                OnError_File_NameChanging(value);
+                ReportPropertyChanging("Error_File_Name");
+                _Error_File_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Error_File_Name");
+                OnError_File_NameChanged();
+            }
+        }
+        private global::System.String _Error_File_Name;
+        partial void OnError_File_NameChanging(global::System.String value);
+        partial void OnError_File_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 User_Id

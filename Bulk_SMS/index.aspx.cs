@@ -64,7 +64,10 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
                            InputFilePath = bs.File_Path,
                            OutputFilePath = bs.Output_File_Path,
                            OutputFileName = bs.Output_File_Name,
+                           ErrorFileName = bs.Error_File_Name,
+                           ErrorFilePath = bs.Error_File_Path,
                            Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
+                           ErrorVisible = !string.IsNullOrEmpty(bs.Error_File_Path),
                            Status = bs.Status
                        };
             gvSMS.DataSource = data;
@@ -87,7 +90,10 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
                            InputFilePath = bs.File_Path,
                            OutputFilePath = bs.Output_File_Path,
                            OutputFileName = bs.Output_File_Name,
+                           ErrorFileName = bs.Error_File_Name,
+                           ErrorFilePath = bs.Error_File_Path,
                            Visible = !string.IsNullOrEmpty(bs.Output_File_Path),
+                           ErrorVisible = !string.IsNullOrEmpty(bs.Error_File_Path),
                            Status = bs.Status
                        };
             gvSMS.DataSource = data;
@@ -112,6 +118,16 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         bulk_SMS = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.Where(x => x.Id == id).First();
         sendFile(bulk_SMS.Output_File_Name, bulk_SMS.Output_File_Path);
     }
+
+    protected void lkBtnErrorDownload_Click(object sender, EventArgs e)
+    {
+        var lkBtn = (LinkButton)sender;
+        var id = long.Parse(lkBtn.CommandArgument.ToString());
+        _SMS_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
+        bulk_SMS = _SMS_EMAIL_DB_Entities.tbl_Bulk_SMS.Where(x => x.Id == id).First();
+        sendFile(bulk_SMS.Error_File_Name, bulk_SMS.Error_File_Path);
+    }
+
 
     protected void sendFile(string FileName, string FilePath)
     {

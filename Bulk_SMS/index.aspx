@@ -60,6 +60,11 @@
                     <asp:LinkButton ID="lkBtnOutputDownload" runat="server" onclick="lkBtnOutputDownload_Click" CausesValidation="false" CommandArgument='<%# Eval("Id") %>' Visible='<%# Eval("Visible") %>' ><%# Eval("OutputFileName") %></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Error File">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lkBtnErrorDownload" runat="server" onclick="lkBtnErrorDownload_Click" CausesValidation="false" CommandArgument='<%# Eval("Id") %>' Visible='<%# Eval("ErrorVisible") %>' ><%# Eval("ErrorFileName") %></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Status">
                 <ItemTemplate>
                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status")%>'></asp:Label>
