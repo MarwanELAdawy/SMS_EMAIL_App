@@ -31,8 +31,8 @@
           <Property Name="Template_Id" Type="bigint" Nullable="false" />
           <Property Name="Output_File_Path" Type="nvarchar(max)" />
           <Property Name="Output_File_Name" Type="nvarchar(max)" />
-          <Property Name="Error_File_Path" Type="nvarchar" MaxLength="20" />
-          <Property Name="Error_File_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Error_File_Path" Type="nvarchar" MaxLength="100" />
+          <Property Name="Error_File_Name" Type="nvarchar" MaxLength="20" />
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Created_At" Type="datetime" Nullable="false" />
           <Property Name="Updated_At" Type="datetime" Nullable="false" />
@@ -235,8 +235,8 @@
           <Property Type="Int64" Name="Template_Id" Nullable="false" />
           <Property Type="String" Name="Output_File_Path" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Output_File_Name" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Error_File_Path" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Error_File_Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Error_File_Path" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Error_File_Name" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="User_Id" Nullable="false" />
           <Property Type="DateTime" Name="Created_At" Nullable="false" />
           <Property Type="DateTime" Name="Updated_At" Nullable="false" />
