@@ -126,7 +126,6 @@
         <EntityContainer Name="SMS_EMAIL_DB_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_Emails_SMS" EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" />
           <EntitySet Name="tbl_Events" EntityType="SMS_EMAIL_DB_Model.tbl_Events" />
-          <EntitySet Name="tbl_Templates" EntityType="SMS_EMAIL_DB_Model.tbl_Templates" />
           <EntitySet Name="tbl_Users" EntityType="SMS_EMAIL_DB_Model.tbl_Users" />
           <AssociationSet Name="FK_tbl_Emails_tbl_Users" Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users">
             <End Role="tbl_Users" EntitySet="tbl_Users" />
@@ -137,6 +136,7 @@
             <End Role="tbl_Events" EntitySet="tbl_Events" />
           </AssociationSet>
           <EntitySet Name="tbl_Bulk_SMS" EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" />
+          <EntitySet Name="tbl_Templates" EntityType="SMS_EMAIL_DB_Model.tbl_Templates" />
         </EntityContainer>
         <EntityType Name="tbl_Emails_SMS">
           <Key>
@@ -173,17 +173,6 @@
           <Property Type="String" Name="Status" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="Created_At" Nullable="false" />
           <NavigationProperty Name="tbl_Emails_SMS" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS" FromRole="tbl_Events" ToRole="tbl_Emails_SMS" />
-        </EntityType>
-        <EntityType Name="tbl_Templates">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="Created_At" Nullable="false" />
-          <Property Type="DateTime" Name="Updated_At" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_Users">
           <Key>
@@ -241,6 +230,17 @@
           <Property Type="DateTime" Name="Created_At" Nullable="false" />
           <Property Type="DateTime" Name="Updated_At" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Created_At" Nullable="false" />
+          <Property Type="DateTime" Name="Updated_At" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -282,18 +282,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Templates">
-            <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Templates">
-              <MappingFragment StoreEntitySet="tbl_Templates">
-                <ScalarProperty Name="Updated_At" ColumnName="Updated_At" />
-                <ScalarProperty Name="Created_At" ColumnName="Created_At" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Users">
             <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Users">
               <MappingFragment StoreEntitySet="tbl_Users">
@@ -327,6 +315,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Templates">
+            <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Templates">
+              <MappingFragment StoreEntitySet="tbl_Templates">
+                <ScalarProperty Name="Updated_At" ColumnName="Updated_At" />
+                <ScalarProperty Name="Created_At" ColumnName="Created_At" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -350,7 +350,6 @@
       <Diagram Name="SMS_EMAIL_Model">
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1.125" Height="4.8648079427083317" />
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Events" Width="1.5" PointX="5.25" PointY="2.375" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Templates" Width="1.5" PointX="0.75" PointY="6.75" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="2" Height="2.9417936197916679" />
         <AssociationConnector Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" >
           <ConnectorPoint PointX="2.25" PointY="3.4708968098958337" />
@@ -361,6 +360,7 @@
           <ConnectorPoint PointX="5.25" PointY="3.4612939453125016" />
         </AssociationConnector>
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" Width="1.5" PointX="5.375" PointY="5.75" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Templates" Width="1.5" PointX="0.75" PointY="6.75" Height="2.1725878906249996" />
       </Diagram>
     </Diagrams>
   </Designer>

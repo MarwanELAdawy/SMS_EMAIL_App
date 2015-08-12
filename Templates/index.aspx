@@ -13,8 +13,9 @@
                 Type
                 <br />
                 <asp:DropDownList ID="ddlNewType" runat="server">
-                    <asp:ListItem>SMS</asp:ListItem>
-                    <asp:ListItem>BULK_SMS</asp:ListItem>
+                    <asp:ListItem Value="SMS">SMS</asp:ListItem>
+                    <asp:ListItem Value="BULK_SMS_STATIC">BULK SMS Static</asp:ListItem>
+                    <asp:ListItem Value="BULK_SMS_DYNAMIC">BULK SMS Dynamic</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>
@@ -30,6 +31,8 @@
                 <asp:TextBox ID="txtTextNew" runat="server" TextMode="MultiLine"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvTel" runat="server" ControlToValidate="txtTextNew"
                     ValidationGroup="new_template" ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                <asp:Label ID="lblErrorN" runat="server" Text="Bulk SMS Dyamic Text should contain word {variable}"
+                    ForeColor="#FF3300" Visible="False" CssClass="margin10"></asp:Label>
             </td>
             <td>
                 <asp:Button ID="btnAdd" runat="server" Text="Add New Template" OnClick="AddNewTemplate"
@@ -59,8 +62,9 @@
                     <asp:HiddenField ID="hdnFldType" runat="server" Value='<%# Eval("Type") %>' />
                     <asp:HiddenField ID="hdnFldId" runat="server" Value='<%# Eval("Id") %>' />
                     <asp:DropDownList ID="ddlType" runat="server" ValidationGroup="edit_template">
-                        <asp:ListItem>SMS</asp:ListItem>
-                        <asp:ListItem>BULK_SMS</asp:ListItem>
+                        <asp:ListItem Value="SMS">SMS</asp:ListItem>
+                        <asp:ListItem Value="BULK_SMS_STATIC">BULK SMS Static</asp:ListItem>
+                        <asp:ListItem Value="BULK_SMS_DYNAMIC">BULK SMS Dynamic</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -72,6 +76,8 @@
                     <asp:TextBox ID="txtText" runat="server" Text='<%# Eval("Text")%>' TextMode="MultiLine"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvText" runat="server" ControlToValidate="txtText"
                         ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                    <asp:Label ID="lblError" runat="server" Text="Bulk SMS Dyamic Text should contain word {variable}"
+                    ForeColor="#FF3300" Visible="False" CssClass="margin10"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />

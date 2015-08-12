@@ -106,22 +106,6 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Templates> tbl_Templates
-        {
-            get
-            {
-                if ((_tbl_Templates == null))
-                {
-                    _tbl_Templates = base.CreateObjectSet<tbl_Templates>("tbl_Templates");
-                }
-                return _tbl_Templates;
-            }
-        }
-        private ObjectSet<tbl_Templates> _tbl_Templates;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_Users> tbl_Users
         {
             get
@@ -150,6 +134,22 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Bulk_SMS> _tbl_Bulk_SMS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Templates> tbl_Templates
+        {
+            get
+            {
+                if ((_tbl_Templates == null))
+                {
+                    _tbl_Templates = base.CreateObjectSet<tbl_Templates>("tbl_Templates");
+                }
+                return _tbl_Templates;
+            }
+        }
+        private ObjectSet<tbl_Templates> _tbl_Templates;
 
         #endregion
         #region AddTo Methods
@@ -171,14 +171,6 @@ namespace SMS_EMAIL_DB_Model
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Templates EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Templates(tbl_Templates tbl_Templates)
-        {
-            base.AddObject("tbl_Templates", tbl_Templates);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_Users(tbl_Users tbl_Users)
@@ -192,6 +184,14 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
         {
             base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Templates EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Templates(tbl_Templates tbl_Templates)
+        {
+            base.AddObject("tbl_Templates", tbl_Templates);
         }
 
         #endregion
