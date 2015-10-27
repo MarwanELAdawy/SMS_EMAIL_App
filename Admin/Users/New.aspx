@@ -47,6 +47,10 @@
                     InitialValue="0">*</asp:RequiredFieldValidator>
       </p>
       <p>
+        <label>Can Search</label>
+          <asp:CheckBox ID="ckbSearch" runat="server" />
+      </p>
+      <p>
           <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Save"  CssClass="btn btn-save"/>
       <asp:Button ID="btnCancel" runat="server" CausesValidation="False" 
                     onclick="btnCancel_Click" Text="Cancel"  CssClass="btn"/>

@@ -27,6 +27,10 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 {
                     toRemoveItems.Add(menuItem);
                 }
+                else if (menuItem.Value == "search")
+                {
+                    toRemoveItems.Add(menuItem);
+                }
             }
         }
         DeleteMenuItems(menuItems, toRemoveItems);

@@ -24,7 +24,8 @@ public partial class Admin_Users_New : System.Web.UI.Page
         }
         var password = StringHelper.MD5Hash(txtPassword.Text.Trim());
         var currentTime = DateTime.Now ;
-        var user = new tbl_Users { User_Name = userName, Password = password, Role = "Normal_User", Status = ddlStatus.SelectedValue, Sign_In_Count = 0, Created_At = currentTime, Updated_At = currentTime };
+        var user = new tbl_Users { User_Name = userName, Password = password, Role = "Normal_User", Can_Search = ckbSearch.Checked,
+            Status = ddlStatus.SelectedValue, Sign_In_Count = 0, Created_At = currentTime, Updated_At = currentTime };
         _sms_EMAIL_DB_Entities.AddTotbl_Users(user);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMEssage"] = "Successfully created a new user";

@@ -1,25 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="search.aspx.cs" Inherits="Bulk_SMS_search" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="search.aspx.cs" Inherits="SMS_search" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
- <script type="text/javascript">
-     $(function () {
-         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
-
-         function endRequestHandler(sender, args) {
-             $(".sent-date").datepicker({
-                 constrainInput: true,
-                 dateFormat: "dd-mm-yy",
-                 changeMonth: true,
-                 changeYear: true
-             });
-
-             $(".sent-date").attr("readonly", true);
-         }
-     });
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <asp:ScriptManager ID="ScriptManager" runat="server">
+<asp:ScriptManager ID="ScriptManager" runat="server">
     </asp:ScriptManager>
     <asp:UpdateProgress ID="updateProgress" runat="server">
         <ProgressTemplate>
@@ -37,22 +21,16 @@
                 <legend>Search </legend>
                 <table class="table table-bordered">
                     <tr>
+                        <th>Mobile Number</th>
+                        <th></th>
+                    </tr>
+                    <tr>
                         <td>
-                            <label>
-                                Search Field</label>
-                            <asp:DropDownList ID="ddlSearchField" runat="server" OnSelectedIndexChanged="ddlSearchField_SelectedIndexChanged">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            <label>
-                                Value</label>
-                            <asp:TextBox ID="txtSentDate" runat="server" CssClass="sent-date"></asp:TextBox>
-                            <asp:TextBox ID="txtField" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvSentDate" runat="server" ControlToValidate="txtSentDate"
+                            <asp:TextBox ID="txtMobileNumber" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvMobileNumber" runat="server" ControlToValidate="txtMobileNumber"
                                 ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-                            <asp:RequiredFieldValidator ID="rfvField" runat="server" ControlToValidate="txtField"
-                                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-                        </td>
+                            <asp:RegularExpressionValidator ID="revMobileNumber" runat="server" ControlToValidate="txtMobileNumber"
+                                    ForeColor="#FF3300" SetFocusOnError="True" ValidationExpression="^[0-9]+$">Enter in Correct Format</asp:RegularExpressionValidator>
                         <td>
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-info" OnClick="btnSearch_Click" />
                         </td>
@@ -64,11 +42,9 @@
     <asp:UpdatePanel ID="gvUpdatePanel" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <h3 class="left">
-                Sent BULK SMS
+                Search Data
             </h3>
-            <h3 class="right">
-                <a href="index.aspx" class="right btn btn-info">Home</a>
-            </h3>
+           
             <div class="clear">
             </div>
             <hr />

@@ -27,6 +27,10 @@
                     ControlToValidate="ddlStatus" ForeColor="#FF3300" SetFocusOnError="True" 
                     InitialValue="0">*</asp:RequiredFieldValidator>
       </p>
+       <p>
+        <label>Can Search</label>
+          <asp:CheckBox ID="ckbSearch" runat="server" />
+      </p>
       <p>
           <asp:HiddenField ID="hdnUserId" runat="server" />
           <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Save"  CssClass="btn btn-save"/>

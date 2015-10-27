@@ -21,6 +21,15 @@ public static class CurrentUser
         return cookie.Split('#')[0];
     }
 
+    public static bool CanSearch()
+    {
+        if (HttpContext.Current.Session["CanSearch"] == null)
+        {
+            HttpContext.Current.Session["CanSearch"] = DBUser().Can_Search;
+        }
+        return bool.Parse(HttpContext.Current.Session["CanSearch"].ToString());
+    }
+
     public static string GetRedirectPath(string role) {
         String returnUrl1 = "";
         if (role == "Admin")

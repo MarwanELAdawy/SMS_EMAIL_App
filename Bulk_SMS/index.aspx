@@ -26,7 +26,7 @@
                 <asp:RequiredFieldValidator ID="rfvTemplate" runat="server" ControlToValidate="ddlTemplate"
                     ForeColor="#FF3300" SetFocusOnError="True" InitialValue="0">*</asp:RequiredFieldValidator>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SMS_EMAIL_DBConnectionString %>"
-                    SelectCommand="SELECT [Id], [Name] FROM [tbl_Templates] WHERE ([Type] = @Type) ORDER BY [Created_At]">
+                    SelectCommand="SELECT [Id], [Name] FROM [tbl_Templates] WHERE ([Type] IN ('BULK_SMS_STATIC', 'BULK_SMS_DYNAMIC')) ORDER BY [Created_At]">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="BULK_SMS" Name="Type" Type="String" />
                     </SelectParameters>

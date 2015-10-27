@@ -24,6 +24,7 @@ public partial class Admin_Users_Edit : System.Web.UI.Page
             txtUserName.Text = user.User_Name;
             ddlStatus.SelectedValue = user.Status;
             hdnCurrentUserName.Value = user.User_Name;
+            ckbSearch.Checked = user.Can_Search;
         }
     }
     protected void btnSave_Click(object sender, EventArgs e)
@@ -42,6 +43,7 @@ public partial class Admin_Users_Edit : System.Web.UI.Page
         user.User_Name = userName;
         user.Status = ddlStatus.SelectedValue;
         user.Updated_At = DateTime.Now;
+        user.Can_Search = ckbSearch.Checked;
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Successfully updated the user!";
         Response.Redirect("index.aspx");
