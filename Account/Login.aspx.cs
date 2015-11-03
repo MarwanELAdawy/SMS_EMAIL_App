@@ -28,7 +28,7 @@ public partial class Account_Login : System.Web.UI.Page
     {
         SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var password = StringHelper.MD5Hash(txtPassword.Text.ToString());
-        tbl_Users user = _sms_EMAIL_DB_Entities.tbl_Users.Where(x => x.User_Name == txtUserName.Text).Where(x => x.Password == password).FirstOrDefault();
+        tbl_Users user = _sms_EMAIL_DB_Entities.tbl_Users.Where(x => x.User_Name == txtUserName.Text).Where(x => x.Password == password && x.Status == "Active").FirstOrDefault();
         if (user == null)
         {
             errorDiv.Visible = true;
