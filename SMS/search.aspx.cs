@@ -46,18 +46,6 @@ public partial class SMS_search : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Sent By", typeof(string)));
         dt.Columns.Add(new DataColumn("Status", typeof(string)));
 
-        IQueryable<tbl_Emails_SMS> ls;
-        List<tbl_Emails_SMS> list;
-        if (CurrentUser.Role() == "Admin")
-        {
-            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "BULK_SMS");
-        }
-        else
-        {
-            var currentUserId = CurrentUser.Id();
-            ls = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Type == "BULK_SMS").Where(x => x.User_Id == currentUserId);
-        }
-
         var _data = from s in _sms_EMAIL_DB_Entities.tbl_Emails_SMS
                     join u in _sms_EMAIL_DB_Entities.tbl_Users
                     on s.User_Id equals u.Id
