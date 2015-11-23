@@ -18,8 +18,8 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SMS_EMAIL_DB_Model.tbl_Emails_SMS), "tbl_Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SMS_EMAIL_DB_Model.tbl_Events), true)]
 [assembly: EdmRelationshipAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Emails_tbl_Users", "tbl_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SMS_EMAIL_DB_Model.tbl_Users), "tbl_Emails_SMS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SMS_EMAIL_DB_Model.tbl_Emails_SMS), true)]
+[assembly: EdmRelationshipAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Emails_SMS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SMS_EMAIL_DB_Model.tbl_Emails_SMS), "tbl_Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SMS_EMAIL_DB_Model.tbl_Events), true)]
 
 #endregion
 
@@ -74,6 +74,22 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<tbl_Bulk_SMS> tbl_Bulk_SMS
+        {
+            get
+            {
+                if ((_tbl_Bulk_SMS == null))
+                {
+                    _tbl_Bulk_SMS = base.CreateObjectSet<tbl_Bulk_SMS>("tbl_Bulk_SMS");
+                }
+                return _tbl_Bulk_SMS;
+            }
+        }
+        private ObjectSet<tbl_Bulk_SMS> _tbl_Bulk_SMS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
         {
             get
@@ -102,22 +118,6 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Events> _tbl_Events;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<tbl_Bulk_SMS> tbl_Bulk_SMS
-        {
-            get
-            {
-                if ((_tbl_Bulk_SMS == null))
-                {
-                    _tbl_Bulk_SMS = base.CreateObjectSet<tbl_Bulk_SMS>("tbl_Bulk_SMS");
-                }
-                return _tbl_Bulk_SMS;
-            }
-        }
-        private ObjectSet<tbl_Bulk_SMS> _tbl_Bulk_SMS;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -155,6 +155,14 @@ namespace SMS_EMAIL_DB_Model
         #region AddTo Methods
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Bulk_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
+        {
+            base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
@@ -168,14 +176,6 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Events(tbl_Events tbl_Events)
         {
             base.AddObject("tbl_Events", tbl_Events);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Bulk_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
-        {
-            base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
         }
     
         /// <summary>
@@ -553,8 +553,7 @@ namespace SMS_EMAIL_DB_Model
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="user_Id">Initial value of the User_Id property.</param>
         /// <param name="created_At">Initial value of the Created_At property.</param>
-        /// <param name="sMS_Sent_At">Initial value of the SMS_Sent_At property.</param>
-        public static tbl_Emails_SMS Createtbl_Emails_SMS(global::System.Int64 id, global::System.String type, global::System.String text, global::System.Int32 user_Id, global::System.DateTime created_At, global::System.DateTime sMS_Sent_At)
+        public static tbl_Emails_SMS Createtbl_Emails_SMS(global::System.Int64 id, global::System.String type, global::System.String text, global::System.Int32 user_Id, global::System.DateTime created_At)
         {
             tbl_Emails_SMS tbl_Emails_SMS = new tbl_Emails_SMS();
             tbl_Emails_SMS.Id = id;
@@ -562,7 +561,6 @@ namespace SMS_EMAIL_DB_Model
             tbl_Emails_SMS.Text = text;
             tbl_Emails_SMS.User_Id = user_Id;
             tbl_Emails_SMS.Created_At = created_At;
-            tbl_Emails_SMS.SMS_Sent_At = sMS_Sent_At;
             return tbl_Emails_SMS;
         }
 
@@ -983,9 +981,9 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime SMS_Sent_At
+        public Nullable<global::System.DateTime> SMS_Sent_At
         {
             get
             {
@@ -1000,35 +998,13 @@ namespace SMS_EMAIL_DB_Model
                 OnSMS_Sent_AtChanged();
             }
         }
-        private global::System.DateTime _SMS_Sent_At;
-        partial void OnSMS_Sent_AtChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _SMS_Sent_At;
+        partial void OnSMS_Sent_AtChanging(Nullable<global::System.DateTime> value);
         partial void OnSMS_Sent_AtChanged();
 
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Events")]
-        public EntityCollection<tbl_Events> tbl_Events
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1064,6 +1040,28 @@ namespace SMS_EMAIL_DB_Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tbl_Users>("SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users", "tbl_Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SMS_EMAIL_DB_Model", "FK_tbl_Events_tbl_Emails_SMS", "tbl_Events")]
+        public EntityCollection<tbl_Events> tbl_Events
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tbl_Events>("SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS", "tbl_Events", value);
                 }
             }
         }
@@ -1470,10 +1468,9 @@ namespace SMS_EMAIL_DB_Model
         /// <param name="password">Initial value of the Password property.</param>
         /// <param name="role">Initial value of the Role property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        /// <param name="can_Search">Initial value of the Can_Search property.</param>
         /// <param name="created_At">Initial value of the Created_At property.</param>
         /// <param name="updated_At">Initial value of the Updated_At property.</param>
-        public static tbl_Users Createtbl_Users(global::System.Int32 id, global::System.String user_Name, global::System.String password, global::System.String role, global::System.String status, global::System.Boolean can_Search, global::System.DateTime created_At, global::System.DateTime updated_At)
+        public static tbl_Users Createtbl_Users(global::System.Int32 id, global::System.String user_Name, global::System.String password, global::System.String role, global::System.String status, global::System.DateTime created_At, global::System.DateTime updated_At)
         {
             tbl_Users tbl_Users = new tbl_Users();
             tbl_Users.Id = id;
@@ -1481,7 +1478,6 @@ namespace SMS_EMAIL_DB_Model
             tbl_Users.Password = password;
             tbl_Users.Role = role;
             tbl_Users.Status = status;
-            tbl_Users.Can_Search = can_Search;
             tbl_Users.Created_At = created_At;
             tbl_Users.Updated_At = updated_At;
             return tbl_Users;
@@ -1616,30 +1612,6 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean Can_Search
-        {
-            get
-            {
-                return _Can_Search;
-            }
-            set
-            {
-                OnCan_SearchChanging(value);
-                ReportPropertyChanging("Can_Search");
-                _Can_Search = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Can_Search");
-                OnCan_SearchChanged();
-            }
-        }
-        private global::System.Boolean _Can_Search;
-        partial void OnCan_SearchChanging(global::System.Boolean value);
-        partial void OnCan_SearchChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Sign_In_Count
@@ -1732,6 +1704,30 @@ namespace SMS_EMAIL_DB_Model
         private global::System.DateTime _Updated_At;
         partial void OnUpdated_AtChanging(global::System.DateTime value);
         partial void OnUpdated_AtChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Can_Search
+        {
+            get
+            {
+                return _Can_Search;
+            }
+            set
+            {
+                OnCan_SearchChanging(value);
+                ReportPropertyChanging("Can_Search");
+                _Can_Search = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Can_Search");
+                OnCan_SearchChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Can_Search;
+        partial void OnCan_SearchChanging(Nullable<global::System.Boolean> value);
+        partial void OnCan_SearchChanged();
 
         #endregion
     

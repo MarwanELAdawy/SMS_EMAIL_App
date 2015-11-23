@@ -24,7 +24,7 @@ public partial class Admin_Users_Edit : System.Web.UI.Page
             txtUserName.Text = user.User_Name;
             ddlStatus.SelectedValue = user.Status;
             hdnCurrentUserName.Value = user.User_Name;
-            ckbSearch.Checked = user.Can_Search;
+            ckbSearch.Checked = user.Can_Search.Value;
         }
     }
     protected void btnSave_Click(object sender, EventArgs e)

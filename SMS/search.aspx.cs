@@ -7,10 +7,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using SMS_EMAIL_DB_Model;
 
-public partial class SMS_search : System.Web.UI.Page
+public partial class SMS_search : MasterApp
 {
-    protected SMS_EMAIL_DB_Entities _sms_EMAIL_DB_Entities;
     string _mobileNumber;
+    int _searchUserId;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!CurrentUser.CanSearch())
@@ -20,10 +20,10 @@ public partial class SMS_search : System.Web.UI.Page
         }
         if (!IsPostBack)
         {
-            BindDataToGridView();
+            BindDdlUsersRoot(ddlUser);
         }
     }
-    protected void gvSMS_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    protected void OnPaging(object sender, GridViewPageEventArgs e)
     {
         gvSMS.PageIndex = e.NewPageIndex;
         BindDataToGridView();
@@ -36,43 +36,33 @@ public partial class SMS_search : System.Web.UI.Page
     protected void BindDataToGridView()
     {
         _mobileNumber = txtMobileNumber.Text.Trim();
-        _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        DataTable dt = new DataTable();
-        DataRow dr = null;
-
-        dt.Columns.Add(new DataColumn("Sent At", typeof(string)));
-        dt.Columns.Add(new DataColumn("Text", typeof(string)));
-        dt.Columns.Add(new DataColumn("Sent To", typeof(string)));
-        dt.Columns.Add(new DataColumn("Sent By", typeof(string)));
-        dt.Columns.Add(new DataColumn("Status", typeof(string)));
-
-        var _data = from s in _sms_EMAIL_DB_Entities.tbl_Emails_SMS
-                    join u in _sms_EMAIL_DB_Entities.tbl_Users
-                    on s.User_Id equals u.Id
-                    where s.Mobile_Number.Contains(_mobileNumber)
-                    orderby s.Created_At descending
-                    select new
-                    {
-                        Sent_At = s.SMS_Sent_At,
-                        Sent_To = s.Mobile_Number,
-                        Message = s.Text,
-                        Sent_By = u.User_Name,
-                        Status = s.SMS_Code_Decode
-                    };
-
-
-        foreach (var x in _data)
+        _searchUserId = int.Parse(ddlUser.SelectedValue);
+        using (_entity = GetEntity())
         {
-            dr = dt.NewRow();
-            dr["Sent At"] = x.Sent_At.ToString();
-            dr["Sent To"] = x.Sent_To;
-            dr["Sent By"] = x.Sent_By;
-            dr["Text"] = x.Message;
-            dr["Status"] = x.Status;
-            dt.Rows.Add(dr);
+            var _data = from s in _entity.tbl_Emails_SMS
+                        join u in _entity.tbl_Users
+                        on s.User_Id equals u.Id
+                        orderby s.Created_At descending
+                        select new
+                        {
+                            Sent_At = s.SMS_Sent_At,
+                            Sent_To = s.Mobile_Number,
+                            Text = s.Text,
+                            Sent_By = u.User_Name,
+                            Sent_By_Id = u.Id,
+                            Status = s.SMS_Code_Decode
+                        };
+            if (_searchUserId != 0)
+            {
+                _data = _data.Where(x => x.Sent_By_Id == _searchUserId);
+            }
+            if (!string.IsNullOrEmpty(_mobileNumber))
+            {
+                _data = _data.Where(x => x.Sent_To.Contains(_mobileNumber));
+            }
+            gvSMS.DataSource = _data;
+            gvSMS.DataBind();
         }
-        gvSMS.DataSource = dt;
-        gvSMS.DataBind();
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)
