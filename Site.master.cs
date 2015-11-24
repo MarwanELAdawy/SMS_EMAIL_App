@@ -27,7 +27,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 {
                     toRemoveItems.Add(menuItem);
                 }
-                else if (menuItem.Value == "search")
+                else if (menuItem.Value == "search" && !CurrentUser.CanSearch())
                 {
                     toRemoveItems.Add(menuItem);
                 }
