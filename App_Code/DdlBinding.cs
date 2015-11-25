@@ -56,7 +56,7 @@ public class DdlBinding : System.Web.UI.Page
         using (_entity = GetEntity())
         {
             var data = from u in _entity.tbl_Users
-                       where u.Status == "Active"
+                       //where u.Status == "Active"
                        orderby u.User_Name
                        select new
                        {
