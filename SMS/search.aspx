@@ -7,6 +7,10 @@
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
 
             function endRequestHandler(sender, args) {
+                AddDatePicker();
+            }
+
+            function AddDatePicker() {
                 $(".sent-date").datepicker({
                     constrainInput: true,
                     dateFormat: "dd-mm-yy",
@@ -16,6 +20,7 @@
 
                 $(".sent-date").attr("readonly", true);
             }
+            AddDatePicker();
         });
     </script>
     <style type="text/css">
