@@ -20,31 +20,41 @@ public partial class SMS_New : System.Web.UI.Page
         if (!IsPostBack)
         {
             duplicateSmsDiv.Visible = false;
-            BindDdl();
         }
     }
 
     protected void btnSend_Click(object sender, EventArgs e)
     {
-        var phoneNumber = "966" + txtMobile.Text.Trim();
-        //id = long.Parse(ddlTemplate.SelectedValue);
-        _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        var count = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Mobile_Number == phoneNumber).Count();
-        if (count == 0)
+        if (Page.IsValid)
         {
-            sendSMS(phoneNumber);
-            return;
+            var phoneNumber = "966" + txtMobile.Text.Trim();
+            //id = long.Parse(ddlTemplate.SelectedValue);
+            using (_sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities())
+            {
+                var count = _sms_EMAIL_DB_Entities.tbl_Emails_SMS.Where(x => x.Mobile_Number == phoneNumber).Count();
+                if (count == 0)
+                {
+                    sendSMS(phoneNumber);
+                    Response.Redirect("Index.aspx");
+                    return;
+                }
+            }
+            btnSend.Visible = false;
+            duplicateSmsDiv.Visible = true;
         }
-        btnSend.Visible = false;
-        duplicateSmsDiv.Visible = true;
     }
 
     protected void btnSendDuplicate_Click(object sender, EventArgs e)
     {
-        var phoneNumber = "966" + txtMobile.Text.Trim();
-        //id = long.Parse(ddlTemplate.SelectedValue);
-        _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        sendSMS(phoneNumber);
+        if (Page.IsValid)
+        {
+            var phoneNumber = "966" + txtMobile.Text.Trim();
+            using (_sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities())
+            {
+                sendSMS(phoneNumber);
+            }
+            Response.Redirect("Index.aspx");
+        }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -52,22 +62,13 @@ public partial class SMS_New : System.Web.UI.Page
         Response.Redirect("Index.aspx");
     }
 
-    protected void sendSMS(string phoneNumber)
+    void sendSMS(string phoneNumber)
     {
-        //id = long.Parse(ddlTemplate.SelectedValue);
-        //tpl = _sms_EMAIL_DB_Entities.tbl_Templates.Where(x => x.Id == id).First();
-        //var message =  tpl.Text.Trim();
         var message = txtText.Text.ToString().Trim();
-        //var unicode = tpl.Language == "English" ? "E" : "U";
         var unicode = rblSMSLanguage.SelectedValue == "English" ? "E" : "U";
-        if (unicode == "U")
-        {
-            //message = StringHelper.StringToHexCode(message);
-        }
         var sms_code = SmsSender.Send(phoneNumber, message);
         var sms_code_decode = StringHelper.ConvertResponseCode(sms_code);
 
-        _sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
         var currentUserId = CurrentUser.Id();
         email = new tbl_Emails_SMS
         {
@@ -89,48 +90,17 @@ public partial class SMS_New : System.Web.UI.Page
             TP_ID = txtTPID.Text,
             Template_Id = id
         };
+        _sms_EMAIL_DB_Entities.AddTotbl_Emails_SMS(email);
+        _sms_EMAIL_DB_Entities.SaveChanges();
         tEvent = new tbl_Events
         {
             Created_At = DateTime.Now,
             Code = sms_code,
-            Status = sms_code_decode
+            Status = sms_code_decode,
+            Email_Sms_Id = email.Id
         };
-        tEvent.tbl_Emails_SMS = email;
         _sms_EMAIL_DB_Entities.AddTotbl_Events(tEvent);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Please check SMS status !";
-
-        Response.Redirect("Index.aspx");
-    }
-
-
-    private void BindCategories(object sender, EventArgs e)
-    {
-    }
-
-    protected void BindDdl()
-    {
-        //_sms_EMAIL_DB_Entities = new SMS_EMAIL_DB_Entities();
-        //var lst = _sms_EMAIL_DB_Entities.tbl_Templates.OrderByDescending(x => x.CreatedAt).ToList();
-        //DataTable table = new DataTable();
-        //table.Columns.Add("Text");
-        //table.Columns.Add("Value");
-        //DataRow dr;
-        //dr = table.NewRow();
-        //dr["Text"] = "Select";
-        //dr["Value"] = "0";
-        //table.Rows.Add(dr);
-        //foreach (var x in lst)
-        //{
-        //    dr = table.NewRow();
-        //    dr["Text"] = x.Text;
-        //    dr["Value"] = x.Id;
-        //    table.Rows.Add(dr);
-        //}
-        //ddlTemplate.DataSource = table;
-        //ddlTemplate.DataTextField = table.Columns["Text"].ColumnName;
-        //ddlTemplate.DataValueField = table.Columns["Value"].ColumnName;
-        //ddlTemplate.DataBind();
-        //ddlTemplate.SelectedIndexChanged += new System.EventHandler(BindCategories);
     }
 }

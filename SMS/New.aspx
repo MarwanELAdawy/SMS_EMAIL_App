@@ -22,29 +22,23 @@
             <label>
                 Claim Number</label>
             <asp:TextBox ID="txtClaimNumber" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvClaimNumber" runat="server" ControlToValidate="txtClaimNumber"
-                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         </p>
         <p>
             <label>
                 Policy Number</label>
             <asp:TextBox ID="txtPolicyNumber" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvPolicyNumber" runat="server" ControlToValidate="txtPolicyNumber"
-                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+            
         </p>
         <p>
             <label>
                 TP Id</label>
             <asp:TextBox ID="txtTPID" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvTPID" runat="server" ControlToValidate="txtTPID"
-                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+            
         </p>
         <p>
             <label>
                 TP Name</label>
             <asp:TextBox ID="txtTpName" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvTpName" runat="server" ControlToValidate="txtTpName"
-                ForeColor="#FF3300" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         </p>
         <p>
             <label>
@@ -84,7 +78,7 @@
         </p>
         -->
         <p>
-            <asp:Button ID="btnSend" runat="server" OnClick="btnSend_Click" Text="Send" CssClass="btn btn-save" />
+            <asp:Button ID="btnSend" runat="server" Text="Send" CssClass="btn btn-save" OnClick="btnSend_Click" CausesValidation="true" />
             <asp:Button ID="btnCancel" runat="server" CausesValidation="False" Text="Cancel"
                 CssClass="btn btn-cancel" OnClick="btnCancel_Click" />
         </p>

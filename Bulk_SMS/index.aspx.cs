@@ -43,7 +43,7 @@ public partial class Bulk_SMS_index : System.Web.UI.Page
         };
         _SMS_EMAIL_DB_Entities.AddTotbl_Bulk_SMS(bulk_SMS);
         _SMS_EMAIL_DB_Entities.SaveChanges();
-        BindGridView();
+        Response.Redirect("Index.aspx");
     }
 
     protected void BindGridView()
