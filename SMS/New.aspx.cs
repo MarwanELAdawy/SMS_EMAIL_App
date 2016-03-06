@@ -70,7 +70,7 @@ public partial class SMS_New : System.Web.UI.Page
         var unicode = rblSMSLanguage.SelectedValue == "English" ? "E" : "U";
         _responseXml = SmsSender.Send(phoneNumber, message);
         GetSmsCodeAndDescription(_responseXml);
-        var sms_code_decode = StringHelper.ConvertResponseCode(_smsCode);
+        var sms_code_decode = StringHelper.ConvertTamyozResponseCode(_smsCode);
 
         var currentUserId = CurrentUser.Id();
         email = new tbl_Emails_SMS

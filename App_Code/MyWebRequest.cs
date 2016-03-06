@@ -69,7 +69,8 @@ public class MyWebRequest
         reader.Close();
         dataStream.Close();
         response.Close();
-        responseFromServer = StringHelper.StripString(responseFromServer);
+        //responseFromServer = StringHelper.StripString(responseFromServer);
+        //responseFromServer = responseFromServer;
         return responseFromServer;
     }
 
