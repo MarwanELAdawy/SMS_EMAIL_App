@@ -90,22 +90,6 @@ namespace SMS_EMAIL_DB_Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
-        {
-            get
-            {
-                if ((_tbl_Emails_SMS == null))
-                {
-                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
-                }
-                return _tbl_Emails_SMS;
-            }
-        }
-        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<tbl_Events> tbl_Events
         {
             get
@@ -150,6 +134,22 @@ namespace SMS_EMAIL_DB_Model
             }
         }
         private ObjectSet<tbl_Users> _tbl_Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tbl_Emails_SMS> tbl_Emails_SMS
+        {
+            get
+            {
+                if ((_tbl_Emails_SMS == null))
+                {
+                    _tbl_Emails_SMS = base.CreateObjectSet<tbl_Emails_SMS>("tbl_Emails_SMS");
+                }
+                return _tbl_Emails_SMS;
+            }
+        }
+        private ObjectSet<tbl_Emails_SMS> _tbl_Emails_SMS;
 
         #endregion
         #region AddTo Methods
@@ -160,14 +160,6 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Bulk_SMS(tbl_Bulk_SMS tbl_Bulk_SMS)
         {
             base.AddObject("tbl_Bulk_SMS", tbl_Bulk_SMS);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
-        {
-            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
         }
     
         /// <summary>
@@ -192,6 +184,14 @@ namespace SMS_EMAIL_DB_Model
         public void AddTotbl_Users(tbl_Users tbl_Users)
         {
             base.AddObject("tbl_Users", tbl_Users);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tbl_Emails_SMS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotbl_Emails_SMS(tbl_Emails_SMS tbl_Emails_SMS)
+        {
+            base.AddObject("tbl_Emails_SMS", tbl_Emails_SMS);
         }
 
         #endregion
@@ -1001,6 +1001,30 @@ namespace SMS_EMAIL_DB_Model
         private Nullable<global::System.DateTime> _SMS_Sent_At;
         partial void OnSMS_Sent_AtChanging(Nullable<global::System.DateTime> value);
         partial void OnSMS_Sent_AtChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SMS_Code_Decode_Arabic
+        {
+            get
+            {
+                return _SMS_Code_Decode_Arabic;
+            }
+            set
+            {
+                OnSMS_Code_Decode_ArabicChanging(value);
+                ReportPropertyChanging("SMS_Code_Decode_Arabic");
+                _SMS_Code_Decode_Arabic = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SMS_Code_Decode_Arabic");
+                OnSMS_Code_Decode_ArabicChanged();
+            }
+        }
+        private global::System.String _SMS_Code_Decode_Arabic;
+        partial void OnSMS_Code_Decode_ArabicChanging(global::System.String value);
+        partial void OnSMS_Code_Decode_ArabicChanged();
 
         #endregion
     

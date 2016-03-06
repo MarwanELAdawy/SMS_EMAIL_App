@@ -76,6 +76,66 @@ public static class StringHelper
         return ConvertedResponse;
     }
 
+    public static string ConvertTamyozResponseCode(string response)
+    {
+        string ConvertedResponse = "";
+        switch (response)
+        {
+            case "100":
+                ConvertedResponse = "Success";
+                break;
+            case "101":
+                ConvertedResponse = "Not Complete";
+                break;
+            case "102":
+                ConvertedResponse = "Invalid User Name";
+                break;
+            case "103":
+                ConvertedResponse = "Invalid Password";
+                break;
+            case "104":
+                ConvertedResponse = "No Balance";
+                break;
+            case "105":
+                ConvertedResponse = "No Balance / Not Sufficient Balance";
+                break;
+            case "106":
+                ConvertedResponse = "Sender Name Not Valid";
+                break;
+            case "107":
+                ConvertedResponse = "Sender Name Blocked";
+                break;
+            case "108":
+                ConvertedResponse = "No Valid Mobile Number";
+                break;
+            case "109":
+                ConvertedResponse = "Cannot send more than 5 blocks";
+                break;
+            case "110":
+                ConvertedResponse = "Try Again";
+                break;
+            case "111":
+                ConvertedResponse = "Transmission Is Closed";
+                break;
+            case "112":
+                ConvertedResponse = "Message Has Blocked Words";
+                break;
+            case "113":
+                ConvertedResponse = "Account Not Active";
+                break;
+            case "114":
+                ConvertedResponse = "Account Stopped";
+                break;
+            case "115":
+                ConvertedResponse = "Number Is Not Active";
+                break;
+            case "116":
+                ConvertedResponse = "Email Not Valid";
+                break;
+        }
+        return ConvertedResponse;
+    }
+
     public static string StripString(string input){
        var result = Regex.Replace(input, "<.+?>", string.Empty);
        result = result.Replace("\n", String.Empty);

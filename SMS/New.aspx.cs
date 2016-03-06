@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SMS_EMAIL_DB_Model;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.Xml;
 
 public partial class SMS_New : System.Web.UI.Page
 {
@@ -15,6 +16,7 @@ public partial class SMS_New : System.Web.UI.Page
     tbl_Events tEvent;
     tbl_Emails_SMS email;
     long id;
+    string _smsCode, _smsDescription, _responseXml;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -66,8 +68,9 @@ public partial class SMS_New : System.Web.UI.Page
     {
         var message = txtText.Text.ToString().Trim();
         var unicode = rblSMSLanguage.SelectedValue == "English" ? "E" : "U";
-        var sms_code = SmsSender.Send(phoneNumber, message);
-        var sms_code_decode = StringHelper.ConvertResponseCode(sms_code);
+        _responseXml = SmsSender.Send(phoneNumber, message);
+        GetSmsCodeAndDescription(_responseXml);
+        var sms_code_decode = StringHelper.ConvertResponseCode(_smsCode);
 
         var currentUserId = CurrentUser.Id();
         email = new tbl_Emails_SMS
@@ -80,8 +83,9 @@ public partial class SMS_New : System.Web.UI.Page
             Text = message,
             //Text = tpl.Text,
             Type = "SMS",
-            SMS_Code = sms_code,
+            SMS_Code = _smsCode,
             SMS_Code_Decode = sms_code_decode,
+            SMS_Code_Decode_Arabic = _smsDescription,
             //SMS_Language = tpl.Language,
             SMS_Language = rblSMSLanguage.SelectedValue,
             User_Id = currentUserId,
@@ -95,12 +99,20 @@ public partial class SMS_New : System.Web.UI.Page
         tEvent = new tbl_Events
         {
             Created_At = DateTime.Now,
-            Code = sms_code,
+            Code = _smsCode,
             Status = sms_code_decode,
             Email_Sms_Id = email.Id
         };
         _sms_EMAIL_DB_Entities.AddTotbl_Events(tEvent);
         _sms_EMAIL_DB_Entities.SaveChanges();
         Session["NoticeMessage"] = "Please check SMS status !";
+    }
+
+    void GetSmsCodeAndDescription(string result)
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(result);
+        _smsCode = xmlDoc.SelectSingleNode("/SendSMS/Code").InnerText;
+        _smsDescription = xmlDoc.SelectSingleNode("/SendSMS/MessageIs").InnerText;
     }
 }

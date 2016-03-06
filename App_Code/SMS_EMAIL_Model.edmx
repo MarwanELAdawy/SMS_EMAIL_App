@@ -59,6 +59,7 @@
           <Property Name="Bulk_Sms_Id" Type="bigint" />
           <Property Name="Created_At" Type="datetime" Nullable="false" />
           <Property Name="SMS_Sent_At" Type="datetime" />
+          <Property Name="SMS_Code_Decode_Arabic" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tbl_Events">
           <Key>
@@ -126,10 +127,10 @@
       <Schema Namespace="SMS_EMAIL_DB_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="SMS_EMAIL_DB_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_Bulk_SMS" EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" />
-          <EntitySet Name="tbl_Emails_SMS" EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" />
           <EntitySet Name="tbl_Events" EntityType="SMS_EMAIL_DB_Model.tbl_Events" />
           <EntitySet Name="tbl_Templates" EntityType="SMS_EMAIL_DB_Model.tbl_Templates" />
           <EntitySet Name="tbl_Users" EntityType="SMS_EMAIL_DB_Model.tbl_Users" />
+          <EntitySet Name="tbl_Emails_SMS" EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" />
           <AssociationSet Name="FK_tbl_Emails_tbl_Users" Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users">
             <End Role="tbl_Users" EntitySet="tbl_Users" />
             <End Role="tbl_Emails_SMS" EntitySet="tbl_Emails_SMS" />
@@ -155,31 +156,6 @@
           <Property Type="Int32" Name="User_Id" Nullable="false" />
           <Property Type="DateTime" Name="Created_At" Nullable="false" />
           <Property Type="DateTime" Name="Updated_At" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbl_Emails_SMS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Email" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Mobile_Number" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Claim_Number" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Policy_Number" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TP_ID" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TP_Name" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email_Subject" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SMS_Language" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SMS_Code" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SMS_Code_Decode" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="User_Id" Nullable="false" />
-          <Property Type="Int64" Name="Template_Id" />
-          <Property Type="Int64" Name="Bulk_Sms_Id" />
-          <Property Type="DateTime" Name="Created_At" Nullable="false" />
-          <Property Type="DateTime" Name="SMS_Sent_At" />
-          <NavigationProperty Name="tbl_Users" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" FromRole="tbl_Emails_SMS" ToRole="tbl_Users" />
-          <NavigationProperty Name="tbl_Events" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS" FromRole="tbl_Emails_SMS" ToRole="tbl_Events" />
         </EntityType>
         <EntityType Name="tbl_Events">
           <Key>
@@ -218,6 +194,32 @@
           <Property Type="DateTime" Name="Updated_At" Nullable="false" />
           <Property Type="Boolean" Name="Can_Search" />
           <NavigationProperty Name="tbl_Emails_SMS" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Emails_SMS" />
+        </EntityType>
+        <EntityType Name="tbl_Emails_SMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile_Number" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Claim_Number" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Policy_Number" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TP_ID" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TP_Name" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email_Subject" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SMS_Language" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SMS_Code" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SMS_Code_Decode" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="User_Id" Nullable="false" />
+          <Property Type="Int64" Name="Template_Id" />
+          <Property Type="Int64" Name="Bulk_Sms_Id" />
+          <Property Type="DateTime" Name="Created_At" Nullable="false" />
+          <Property Type="DateTime" Name="SMS_Sent_At" />
+          <Property Type="String" Name="SMS_Code_Decode_Arabic" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" FromRole="tbl_Emails_SMS" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Events" Relationship="SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS" FromRole="tbl_Emails_SMS" ToRole="tbl_Events" />
         </EntityType>
         <Association Name="FK_tbl_Emails_tbl_Users">
           <End Type="SMS_EMAIL_DB_Model.tbl_Users" Role="tbl_Users" Multiplicity="1" />
@@ -267,30 +269,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Emails_SMS">
-            <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Emails_SMS">
-              <MappingFragment StoreEntitySet="tbl_Emails_SMS">
-                <ScalarProperty Name="SMS_Sent_At" ColumnName="SMS_Sent_At" />
-                <ScalarProperty Name="Created_At" ColumnName="Created_At" />
-                <ScalarProperty Name="Bulk_Sms_Id" ColumnName="Bulk_Sms_Id" />
-                <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
-                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
-                <ScalarProperty Name="SMS_Code_Decode" ColumnName="SMS_Code_Decode" />
-                <ScalarProperty Name="SMS_Code" ColumnName="SMS_Code" />
-                <ScalarProperty Name="SMS_Language" ColumnName="SMS_Language" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="Email_Subject" ColumnName="Email_Subject" />
-                <ScalarProperty Name="TP_Name" ColumnName="TP_Name" />
-                <ScalarProperty Name="TP_ID" ColumnName="TP_ID" />
-                <ScalarProperty Name="Policy_Number" ColumnName="Policy_Number" />
-                <ScalarProperty Name="Claim_Number" ColumnName="Claim_Number" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Events">
             <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Events">
               <MappingFragment StoreEntitySet="tbl_Events">
@@ -330,6 +308,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Emails_SMS">
+            <EntityTypeMapping TypeName="SMS_EMAIL_DB_Model.tbl_Emails_SMS">
+              <MappingFragment StoreEntitySet="tbl_Emails_SMS">
+                <ScalarProperty Name="SMS_Code_Decode_Arabic" ColumnName="SMS_Code_Decode_Arabic" />
+                <ScalarProperty Name="SMS_Sent_At" ColumnName="SMS_Sent_At" />
+                <ScalarProperty Name="Created_At" ColumnName="Created_At" />
+                <ScalarProperty Name="Bulk_Sms_Id" ColumnName="Bulk_Sms_Id" />
+                <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="SMS_Code_Decode" ColumnName="SMS_Code_Decode" />
+                <ScalarProperty Name="SMS_Code" ColumnName="SMS_Code" />
+                <ScalarProperty Name="SMS_Language" ColumnName="SMS_Language" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Email_Subject" ColumnName="Email_Subject" />
+                <ScalarProperty Name="TP_Name" ColumnName="TP_Name" />
+                <ScalarProperty Name="TP_ID" ColumnName="TP_ID" />
+                <ScalarProperty Name="Policy_Number" ColumnName="Policy_Number" />
+                <ScalarProperty Name="Claim_Number" ColumnName="Claim_Number" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -352,13 +355,13 @@
     <Diagrams>
       <Diagram Name="SMS_EMAIL_Model">
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Bulk_SMS" Width="1.5" PointX="5.75" PointY="5.75" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="1.125" Height="4.8648079427083317" />
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Events" Width="1.5" PointX="5.25" PointY="2.375" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Templates" Width="1.5" PointX="0.75" PointY="6.75" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Users" Width="1.5" PointX="0.75" PointY="1.875" Height="3.1340950520833357" />
+        <EntityTypeShape EntityType="SMS_EMAIL_DB_Model.tbl_Emails_SMS" Width="1.5" PointX="3" PointY="0.875" Height="5.057109374999996" />
         <AssociationConnector Association="SMS_EMAIL_DB_Model.FK_tbl_Emails_tbl_Users" >
-          <ConnectorPoint PointX="2.25" PointY="3.4420475260416676" />
-          <ConnectorPoint PointX="3" PointY="3.4420475260416676" />
+          <ConnectorPoint PointX="2.25" PointY="3.4420475260416659" />
+          <ConnectorPoint PointX="3" PointY="3.4420475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="SMS_EMAIL_DB_Model.FK_tbl_Events_tbl_Emails_SMS" >
           <ConnectorPoint PointX="4.5" PointY="3.4612939453125" />
